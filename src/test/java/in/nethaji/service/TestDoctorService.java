@@ -13,7 +13,7 @@ public class TestDoctorService {
 	@Test
 	public void testGetDotors() {
 		List<Doctor> doctorList = DoctorService.getDoctors();
-		assertEquals(2,doctorList.size());
+		assertEquals(4,doctorList.size());
 	}
 
 
