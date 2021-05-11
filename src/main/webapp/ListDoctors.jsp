@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>List of Doctors</title>
@@ -16,9 +16,9 @@
 	<table class="table table-bordered">
 	<thead>
     <tr>
-      <th>S.no</th>
-      <th>Doctor name</th>
-      <th>Specialist</th>
+      <th scope="col">S.no</th>
+      <th scope="col">Doctor name</th>
+      <th scope="col">Specialist</th>
     </tr>
   	</thead>
   	<tbody>
@@ -29,9 +29,9 @@
   	  		i++;
   	%>
   	   <tr>
-  	     <td><%=i %></td>
-    	 <td>Dr.<%=doctor.getDoctorName() %></td>
-    	 <td><%=doctor.getSpecialist() %> </td>
+  	     <td scope="col"><%=i %></td>
+    	 <td scope="col">Dr.<%=doctor.getDoctorName() %></td>
+    	 <td scope="col"><%=doctor.getSpecialist() %> </td>
    	   </tr>
    	  <% } %>
   	</tbody>

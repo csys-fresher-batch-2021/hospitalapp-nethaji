@@ -11,7 +11,7 @@ public class DoctorService {
 		//Default Constructor
 	}
 
-	private static final List<Doctor> doctorList = new ArrayList<Doctor>();
+	private static final List<Doctor> doctorList = new ArrayList<>();
 	
 	static {
 		 Doctor doctor1 = new Doctor("Gopala Krishnan", "Cardiology");

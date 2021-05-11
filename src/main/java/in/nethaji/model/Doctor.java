@@ -13,11 +13,8 @@ public class Doctor {
 	public String getSpecialist() {
 		return this.specialist;
 	}
-	
-//	public String setDoctorname(String doctorName) {
-//		return this.doctorName = doctorName;
-//	}
-	
+
+	//Constructor
 	public  Doctor (String doctorName, String specialist) {
 		super();
 		this.doctorName =doctorName;
