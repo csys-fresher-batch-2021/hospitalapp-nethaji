@@ -4,15 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import in.nethaji.service.DoctorService;
+import in.nethaji.model.Doctor;
 
 public class TestDoctorService {
 	
 	@Test
 	public void testGetDotors() {
-		List<String> doctorList = DoctorService.getDoctors();
+		List<Doctor> doctorList = DoctorService.getDoctors();
 		assertEquals(2,doctorList.size());
 	}
 
