@@ -1,0 +1,15 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{c8e4d0d2-f84c-4181-9a40-c90c0b0502e9}}
+          heroku_app_name: "hospitalapp-nethaji" #Must be unique in Heroku
+          heroku_email: "nethaji1410@gmail.com"
