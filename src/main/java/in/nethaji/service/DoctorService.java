@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.nethaji.model.Doctor;
+import in.nethaji.util.StringValidation;
 
 public class DoctorService {
 
@@ -11,19 +12,21 @@ public class DoctorService {
 		// Default Constructor
 	}
 
-	private static final List<Doctor> doctorList = new ArrayList<>();
+	private static final List<String> specialistList = new ArrayList<>();
 
 	static {
-		Doctor doctor1 = new Doctor("Gopala Krishnan", "Cardiology");
-		Doctor doctor2 = new Doctor("Venkataraman", "General");
-		Doctor doctor3 = new Doctor("Rajaraghupathy", "ENT");
-		Doctor doctor4 = new Doctor("Gopalachari", "General");
-
-		doctorList.add(doctor1);
-		doctorList.add(doctor2);
-		doctorList.add(doctor3);
-		doctorList.add(doctor4);
+		specialistList.add("ENT");
+		specialistList.add("General");
+		specialistList.add("Cardiology");
+		specialistList.add("ophthalmologist");
 	}
+
+	public static List<String> getSpecialistList() {
+		return specialistList;
+	}
+
+	private static final List<Doctor> doctorList = new ArrayList<>();
+
 
 	/**
 	 * This method is used to get the list of doctors
@@ -32,6 +35,20 @@ public class DoctorService {
 	 */
 	public static List<Doctor> getDoctors() {
 		return doctorList;
+	}
+	
+	/**
+	 * This method is used to add Doctor details
+	 * 
+	 * @param obj
+	 */
+
+	public static void addDoctor(Doctor obj) {
+		if (StringValidation.isValidString(obj.getDoctorName())) {
+			doctorList.add(obj);
+		} else {
+			throw new RuntimeException("Invalid Doctor Name");
+		}
 	}
 
 }

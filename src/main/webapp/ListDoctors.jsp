@@ -39,6 +39,9 @@
 				%>
 			</tbody>
 		</table>
+		
+		<br />
+		<a href="AddDoctor.jsp">Add Doctor</a>
 	</main>
 
 </body>
