@@ -1,3 +1,4 @@
+<%@page import="in.nethaji.service.DoctorSpecialist"%>
 <%@page import="in.nethaji.service.DoctorService"%>
 <%@page import="java.util.List"%>
 <%@page import="in.nethaji.model.Doctor"%>
@@ -22,7 +23,7 @@
 			<select name="specialist" required>
 			<option selected disabled value="">--Select Specialist--</option>
 				<%
-				List<String> specialistInfo = DoctorService.getSpecialistList();
+				List<String> specialistInfo = DoctorSpecialist.getSpecialistList();
 				
 				for (String specialist : specialistInfo) {
 				%>
