@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PatientReason {
 
-	public PatientReason() {
+	private PatientReason() {
 		// Default Constructor
 	}
 
