@@ -3,6 +3,8 @@ package in.nethaji.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.taglibs.standard.tag.common.core.ForEachSupport;
+
 import in.nethaji.model.Doctor;
 import in.nethaji.util.StringValidation;
 
@@ -35,6 +37,34 @@ public class DoctorService {
 		} else {
 			throw new RuntimeException("Invalid Doctor Name");
 		}
+	}
+	
+	/**
+	 * This method is used to delete doctor name
+	 * 
+	 * @param doctorName
+	 * @return
+	 */
+
+	public static boolean deleteDoctor(String doctorName) {
+
+		boolean isDeleted = false;
+		Doctor searchDoctor = null;
+		if (StringValidation.isValidString(doctorName)) {
+			for (Doctor doctor : doctorList) {
+				if (doctor.getDoctorName().equalsIgnoreCase(doctorName)) {
+					searchDoctor = doctor;
+					break;
+				}
+			}
+		}
+		if (searchDoctor != null) {
+			doctorList.remove(searchDoctor);
+			isDeleted = true;
+		} else {
+			throw new RuntimeException("Invalid Doctor Name");
+		}
+		return isDeleted;
 	}
 
 }

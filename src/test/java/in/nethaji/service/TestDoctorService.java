@@ -11,7 +11,7 @@ import in.nethaji.model.Doctor;
 
 public class TestDoctorService {
 	
-	@Before
+	@BeforeClass
 	public void setUp() throws Exception {
 		List<Doctor> doctorList = DoctorService.getDoctors();
 		Doctor doctor1 = new Doctor("Gopala Krishnan", "ENT");
