@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import in.nethaji.model.Doctor;
 
-public class TestDoctorService {
-	
+public class TestDisplayDoctor {
+
 	@BeforeClass
 	public static void setUp() throws Exception {
 		List<Doctor> doctorList = DoctorService.getDoctors();
@@ -24,7 +24,7 @@ public class TestDoctorService {
 		doctorList.add(doctor3);
 		doctorList.add(doctor4);
 	}
-	
+
 	/**
 	 * This method is used to test display doctors
 	 */
@@ -32,7 +32,7 @@ public class TestDoctorService {
 	@Test
 	public void testGetDoctors() {
 		List<Doctor> doctorList = DoctorService.getDoctors();
-		assertEquals(4, doctorList.size() );
+		assertEquals(4, doctorList.size());
 	}
 
 }

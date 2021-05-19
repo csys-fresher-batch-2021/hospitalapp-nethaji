@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DoctorSpecialist {
 
-	public DoctorSpecialist() {
+	private DoctorSpecialist() {
 		// Default Constructor
 	}
 

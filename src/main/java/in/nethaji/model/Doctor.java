@@ -3,13 +3,13 @@ package in.nethaji.model;
 public class Doctor {
 
 	private String doctorName;
-	
+
 	private String specialist;
 
 	// Constructor
 	public Doctor(String doctorName, String specialist) {
 		this.doctorName = doctorName;
-		this.specialist=specialist;
+		this.specialist = specialist;
 	}
 
 	public String getDoctorName() {
@@ -19,6 +19,5 @@ public class Doctor {
 	public String getSpecialist() {
 		return specialist;
 	}
-
 
 }
