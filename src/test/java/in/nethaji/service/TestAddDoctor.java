@@ -1,5 +1,7 @@
 package in.nethaji.service;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import in.nethaji.model.Doctor;
@@ -19,15 +21,24 @@ public class TestAddDoctor {
 	@Test
 	public void TestAddDoctor2() {
 
-		Doctor doctor = new Doctor ("Nethaji" , "Cardiology");
-		DoctorService.addDoctor(doctor);
+		try {
+			Doctor doctor = new Doctor ("Nethaji" , "Cardiology");
+			DoctorService.addDoctor(doctor);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void TestAddDoctor3() {
 		
-		Doctor doctor = new Doctor ("", "General");
-		DoctorService.addDoctor(doctor);
+		try {
+			Doctor doctor = new Doctor ("", "General");
+			DoctorService.addDoctor(doctor);
+		} catch (Exception e) {
+			assertEquals("Invalid Doctor Name", e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 }

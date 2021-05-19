@@ -5,15 +5,16 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import in.nethaji.model.Doctor;
 
 public class TestDeleteDoctor {
 
-	@BeforeClass
-	public static void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		List<Doctor> doctorList = DoctorService.getDoctors();
 		Doctor doctor1 = new Doctor("Gopala Krishnan", "ENT");
 		Doctor doctor2 = new Doctor("Venkataraman", "General");
@@ -25,6 +26,14 @@ public class TestDeleteDoctor {
 		doctorList.add(doctor3);
 		doctorList.add(doctor4);
 	}
+	
+	
+	@After
+	public void tearDown() throws Exception {
+		DoctorService.getDoctors().clear();
+	}
+
+	
 
 	@Test
 	public void testDeleteDoctor1() {
@@ -58,5 +67,6 @@ public class TestDeleteDoctor {
 			e.printStackTrace();
 		}
 	}
+
 
 }
