@@ -32,10 +32,10 @@
 					i++;
 				%>
 				<tr>
-					<td scope="col"><%=i%></td>
-					<td scope="col">Dr.<%=doctor.getDoctorName()%></td>
-					<td scope="col"><%=doctor.getSpecialist()%></td>
-					<td scope="col"><a
+					<td ><%=i%></td>
+					<td >Dr.<%=doctor.getDoctorName()%></td>
+					<td ><%=doctor.getSpecialist()%></td>
+					<td ><a
 						href="DeleteDoctorServlet?doctorName=<%=doctor.getDoctorName()%>"
 						class="btn btn-danger">Delete</a>
 				</tr>
