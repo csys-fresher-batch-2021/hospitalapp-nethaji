@@ -4,15 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import in.nethaji.model.Doctor;
 
 public class TestDoctorService {
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUp() throws Exception {
 		List<Doctor> doctorList = DoctorService.getDoctors();
 		Doctor doctor1 = new Doctor("Gopala Krishnan", "ENT");
 		Doctor doctor2 = new Doctor("Venkataraman", "General");
@@ -24,6 +24,10 @@ public class TestDoctorService {
 		doctorList.add(doctor3);
 		doctorList.add(doctor4);
 	}
+	
+	/**
+	 * This method is used to test display doctors
+	 */
 
 	@Test
 	public void testGetDoctors() {

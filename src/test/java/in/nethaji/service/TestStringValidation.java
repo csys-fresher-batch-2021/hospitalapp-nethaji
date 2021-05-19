@@ -15,12 +15,19 @@ public class TestStringValidation {
 		assertTrue(isValid);
 	}
 	
+	/**
+	 * This method is used to check false string value
+	 */
+	
 	@Test
 	public void TestStringValidation2() {
 		boolean isValid = StringValidation.isValidString(null);
 		assertFalse(isValid);
 	}
 
+	/**
+	 * This method is used to test wrong string value
+	 */
 	@Test
 	public void TestStringValidation3() {
 		boolean isValid = StringValidation.isValidString("    ");

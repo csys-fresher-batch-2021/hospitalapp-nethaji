@@ -3,6 +3,7 @@ package in.nethaji.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.nethaji.exception.ServiceException;
 import in.nethaji.model.Doctor;
 import in.nethaji.util.StringValidation;
 
@@ -29,12 +30,43 @@ public class DoctorService {
 	 * @param obj
 	 */
 
-	public static void addDoctor(Doctor obj) {
+	public static boolean addDoctor(Doctor obj) {
+		boolean isAdded = false;
 		if (StringValidation.isValidString(obj.getDoctorName())) {
 			doctorList.add(obj);
+			isAdded = true;
 		} else {
 			throw new RuntimeException("Invalid Doctor Name");
 		}
+		return isAdded;
+	}
+
+	/**
+	 * This method is used to delete doctor name
+	 * 
+	 * @param doctorName
+	 * @return
+	 */
+
+	public static boolean deleteDoctor(String doctorName) {
+
+		boolean isDeleted = false;
+		Doctor searchDoctor = null;
+		if (StringValidation.isValidString(doctorName)) {
+			for (Doctor doctor : doctorList) {
+				if (doctor.getDoctorName().equalsIgnoreCase(doctorName)) {
+					searchDoctor = doctor;
+					break;
+				}
+			}
+		}
+		if (searchDoctor != null) {
+			doctorList.remove(searchDoctor);
+			isDeleted = true;
+		} else {
+			throw new ServiceException("Invalid Doctor Name");
+		}
+		return isDeleted;
 	}
 
 }

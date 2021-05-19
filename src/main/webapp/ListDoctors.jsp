@@ -13,6 +13,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Doctors</h3>
+		<a href="AddDoctor.jsp">Add Doctor</a><br />
 		<table class="table table-bordered">
 			<caption>List of Available Doctors</caption>
 			<thead>
@@ -20,6 +21,7 @@
 					<th scope="col">S.no</th>
 					<th scope="col">Doctor name</th>
 					<th scope="col">Specialist</th>
+					<th scope="col">Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,18 +32,21 @@
 					i++;
 				%>
 				<tr>
-					<td scope="col"><%=i%></td>
-					<td scope="col">Dr.<%=doctor.getDoctorName()%></td>
-					<td scope="col"><%=doctor.getSpecialist()%></td>
+					<td ><%=i%></td>
+					<td >Dr.<%=doctor.getDoctorName()%></td>
+					<td ><%=doctor.getSpecialist()%></td>
+					<td ><a
+						href="DeleteDoctorServlet?doctorName=<%=doctor.getDoctorName()%>"
+						class="btn btn-danger">Delete</a>
 				</tr>
 				<%
 				}
 				%>
 			</tbody>
 		</table>
-		
+
 		<br />
-		<a href="AddDoctor.jsp">Add Doctor</a>
+
 	</main>
 
 </body>
