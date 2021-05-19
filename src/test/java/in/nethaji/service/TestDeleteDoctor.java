@@ -2,6 +2,7 @@ package in.nethaji.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
@@ -26,14 +27,11 @@ public class TestDeleteDoctor {
 		doctorList.add(doctor3);
 		doctorList.add(doctor4);
 	}
-	
-	
+
 	@After
 	public void tearDown() throws Exception {
 		DoctorService.getDoctors().clear();
 	}
-
-	
 
 	@Test
 	public void testDeleteDoctor1() {
@@ -45,7 +43,7 @@ public class TestDeleteDoctor {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testDeleteDoctor2() {
 
@@ -53,10 +51,10 @@ public class TestDeleteDoctor {
 			boolean isDeleted = DoctorService.deleteDoctor("venkataraman");
 			assertTrue(isDeleted);
 		} catch (Exception e) {
-			e.printStackTrace();
+			fail();
 		}
 	}
-	
+
 	@Test
 	public void testDeleteDoctor3() {
 
@@ -67,6 +65,5 @@ public class TestDeleteDoctor {
 			e.printStackTrace();
 		}
 	}
-
 
 }
