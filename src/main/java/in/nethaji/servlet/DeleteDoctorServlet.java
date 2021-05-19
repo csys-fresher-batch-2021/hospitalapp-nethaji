@@ -15,26 +15,23 @@ import in.nethaji.service.DoctorService;
 @WebServlet("/DeleteDoctorServlet")
 public class DeleteDoctorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	@Override   
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
 		try {
 			String doctorName = request.getParameter("doctorName");
 			boolean isDeleted = DoctorService.deleteDoctor(doctorName);
-			if(isDeleted) {
-			response.sendRedirect("ListDoctors.jsp");
-			}
-			else {
+			if (isDeleted) {
+				response.sendRedirect("ListDoctors.jsp");
+			} else {
 				String errorMessage = "Unable to delete doctor";
-				response.sendRedirect("ListDoctors.jsp?errorMessage " +errorMessage);
+				response.sendRedirect("ListDoctors.jsp?errorMessage " + errorMessage);
 			}
-		 } 
-			catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("ListDoctors.jsp?errorMessage="+e.getMessage());
+			response.sendRedirect("ListDoctors.jsp?errorMessage=" + e.getMessage());
 		}
 	}
 }

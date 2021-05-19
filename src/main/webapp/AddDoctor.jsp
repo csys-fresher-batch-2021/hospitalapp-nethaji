@@ -18,16 +18,15 @@
 			<label for="doctorName">Doctor Name</label> <input type="text"
 				name="doctorName" pattern="[A-Za-z\s]{3,20}"
 				placeholder="Enter Doctor name" required autofocus /> <br /> <br />
-			<label for="specialist"> Specialist </label> 
-			
-			<select name="specialist" required>
-			<option selected disabled value="">--Select Specialist--</option>
+			<label for="specialist"> Specialist </label> <select
+				name="specialist" required>
+				<option selected disabled value="">--Select Specialist--</option>
 				<%
 				List<String> specialistInfo = DoctorSpecialist.getSpecialistList();
-				
+
 				for (String specialist : specialistInfo) {
 				%>
-				<option value="<%=specialist %>"><%=specialist%></option>
+				<option value="<%=specialist%>"><%=specialist%></option>
 				<%
 				}
 				%>

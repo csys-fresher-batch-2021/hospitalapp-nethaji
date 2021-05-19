@@ -16,19 +16,19 @@ import in.nethaji.service.DoctorService;
 @WebServlet("/AddDoctorServlet")
 public class AddDoctorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	@Override   
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String doctorName = request.getParameter("doctorName");
 		String specialist = request.getParameter("specialist");
 		try {
-			Doctor doctor = new Doctor(doctorName,specialist);
+			Doctor doctor = new Doctor(doctorName, specialist);
 			DoctorService.addDoctor(doctor);
 			response.sendRedirect("ListDoctors.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("AddDoctor.jsp?errorMessage="+e.getMessage());
+			response.sendRedirect("AddDoctor.jsp?errorMessage=" + e.getMessage());
 		}
 	}
 }
