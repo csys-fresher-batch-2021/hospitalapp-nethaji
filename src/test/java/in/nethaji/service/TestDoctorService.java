@@ -24,6 +24,10 @@ public class TestDoctorService {
 		doctorList.add(doctor3);
 		doctorList.add(doctor4);
 	}
+	
+	/**
+	 * This method is used to test display doctors
+	 */
 
 	@Test
 	public void testGetDoctors() {

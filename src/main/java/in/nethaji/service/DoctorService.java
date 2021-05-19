@@ -30,12 +30,15 @@ public class DoctorService {
 	 * @param obj
 	 */
 
-	public static void addDoctor(Doctor obj) {
+	public static boolean addDoctor(Doctor obj) {
+		boolean isAdded = false;
 		if (StringValidation.isValidString(obj.getDoctorName())) {
 			doctorList.add(obj);
+			isAdded = true;
 		} else {
 			throw new RuntimeException("Invalid Doctor Name");
 		}
+		return isAdded;
 	}
 
 	/**

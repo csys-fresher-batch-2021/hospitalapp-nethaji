@@ -13,6 +13,7 @@ import org.junit.Test;
 import in.nethaji.model.Doctor;
 
 public class TestDeleteDoctor {
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -32,6 +33,10 @@ public class TestDeleteDoctor {
 	public void tearDown() throws Exception {
 		DoctorService.getDoctors().clear();
 	}
+	
+	/**
+	 * This method is used to test delete doctor
+	 */
 
 	@Test
 	public void testDeleteDoctor1() {
@@ -43,6 +48,10 @@ public class TestDeleteDoctor {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * This method is used to test delete doctor
+	 */
 
 	@Test
 	public void testDeleteDoctor2() {
@@ -55,6 +64,9 @@ public class TestDeleteDoctor {
 		}
 	}
 
+	/**
+	 * This method is used to test delete doctor.Here null value is checked
+	 */
 	@Test
 	public void testDeleteDoctor3() {
 
