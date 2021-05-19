@@ -1,4 +1,4 @@
-package in.nethaji.Exception;
+package in.nethaji.exception;
 
 public class ServiceException extends RuntimeException {
 

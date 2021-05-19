@@ -3,7 +3,7 @@ package in.nethaji.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.nethaji.Exception.ServiceException;
+import in.nethaji.exception.ServiceException;
 import in.nethaji.model.Doctor;
 import in.nethaji.util.StringValidation;
 
