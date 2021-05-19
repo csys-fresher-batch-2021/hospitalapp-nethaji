@@ -6,7 +6,7 @@ import java.util.List;
 public class PatientReason {
 
 	public PatientReason() {
-		// TODO Auto-generated constructor stub
+		// Default Constructor
 	}
 
 	private static final List<String> reasonList = new ArrayList<>();

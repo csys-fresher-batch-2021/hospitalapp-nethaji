@@ -10,7 +10,7 @@ import in.nethaji.model.Patient;
 
 public class PatientService {
 
-	public PatientService() {
+	private PatientService() {
 		// Default Constructor
 	}
 
