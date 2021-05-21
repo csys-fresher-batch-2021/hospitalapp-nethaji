@@ -19,5 +19,4 @@ public class Doctor {
 	public String getSpecialist() {
 		return specialist;
 	}
-
 }
