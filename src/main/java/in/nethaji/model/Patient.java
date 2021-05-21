@@ -8,9 +8,6 @@ public class Patient {
 	private String patientGender;
 	private String reason;
 
-	public Patient() {
-		// Default Constructor
-	}
 
 	public int getPatientId() {
 		return patientId;
