@@ -1,10 +1,10 @@
 package in.nethaji.exception;
 
-public class ServiceException extends RuntimeException {
+public class UtilException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public ServiceException(String message) {
+	public UtilException(String message) {
 		super(message);
 	}
 

@@ -2,7 +2,7 @@
 <%@page import="in.nethaji.model.Medicine"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +36,8 @@
 					<td><%=i%></td>
 					<td><%=medicine.getMedicineName()%></td>
 					<td><%=medicine.getMedicinePrice()%></td>
-					<td><%=medicine.getMedicineExpiry() %></td>
-					<td><%=medicine.getQuantity() %></td>
+					<td><%=medicine.getMedicineExpiry()%></td>
+					<td><%=medicine.getQuantity()%></td>
 				</tr>
 				<%
 				}
@@ -48,7 +48,7 @@
 		<br />
 
 	</main>
-	
+
 
 </body>
 </html>

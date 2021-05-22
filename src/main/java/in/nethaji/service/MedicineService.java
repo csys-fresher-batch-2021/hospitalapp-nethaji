@@ -10,7 +10,7 @@ public class MedicineService {
 	private MedicineService() {
 		// Default Constructor
 	}
-	
+
 	private static final List<Medicine> medicineList = new ArrayList<>();
 
 	/**
