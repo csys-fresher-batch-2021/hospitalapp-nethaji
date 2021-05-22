@@ -6,6 +6,7 @@ package in.nethaji.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.nethaji.validation.PatientValidation;
 import in.nethaji.model.Patient;
 
 public class PatientService {
@@ -23,6 +24,15 @@ public class PatientService {
 	 */
 	public static List<Patient> getPatients() {
 		return patientList;
+	}
+
+	public static boolean addPatient(Patient patient) {
+		boolean isAdded = false;
+		if (PatientValidation.isValidPatient(patient)) {
+			patientList.add(patient);
+			isAdded = true;
+		}
+		return isAdded;
 	}
 
 }

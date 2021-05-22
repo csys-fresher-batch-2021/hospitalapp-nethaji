@@ -8,6 +8,13 @@ public class Patient {
 	private String patientGender;
 	private String reason;
 
+	public Patient(String patientName, int patientAge, String patientGender, String reason) {
+		super();
+		this.patientName = patientName;
+		this.patientAge = patientAge;
+		this.patientGender = patientGender;
+		this.reason = reason;
+	}
 
 	public int getPatientId() {
 		return patientId;

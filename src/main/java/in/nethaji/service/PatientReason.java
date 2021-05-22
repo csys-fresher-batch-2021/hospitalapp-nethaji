@@ -26,7 +26,7 @@ public class PatientReason {
 	 * @return
 	 */
 
-	public static List<String> getSpecialistList() {
+	public static List<String> getReasonList() {
 		return reasonList;
 	}
 
