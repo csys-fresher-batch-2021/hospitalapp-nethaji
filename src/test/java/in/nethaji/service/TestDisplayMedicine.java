@@ -15,19 +15,9 @@ public class TestDisplayMedicine {
 	public static void setUp() throws Exception {
 		List<Medicine> medicineList = MedicineService.getMedicineList();
 
-		Medicine medicine1 = new Medicine();
-		medicine1.setMedicineId(10);
-		medicine1.setMedicineName("Paracetamol");
-		medicine1.setMedicinePrice(10.00);
-		medicine1.setMedicineExpiry("2021-10-10");
-		medicine1.setQuantity(100);
+		Medicine medicine1 = new Medicine("Paracetamol", 10.0, "2021-10-10", 100);
 
-		Medicine medicine2 = new Medicine();
-		medicine2.setMedicineId(10);
-		medicine2.setMedicineName("Eye drops");
-		medicine2.setMedicinePrice(65.00);
-		medicine2.setMedicineExpiry("2021-10-10");
-		medicine2.setQuantity(100);
+		Medicine medicine2 = new Medicine("Benadryl", 70.0, "2022-12-03", 30);
 
 		medicineList.add(medicine1);
 		medicineList.add(medicine2);
