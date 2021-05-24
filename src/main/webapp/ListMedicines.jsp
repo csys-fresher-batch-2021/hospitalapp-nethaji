@@ -23,6 +23,7 @@
 					<th scope="col">Price</th>
 					<th scope="col">Expiry Date</th>
 					<th scope="col">Quantity</th>
+					<th scope="col">Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +39,9 @@
 					<td><%=medicine.getPrice()%></td>
 					<td><%=medicine.getExpiryDate()%></td>
 					<td><%=medicine.getQuantity()%></td>
+					<td><a
+						href="DeleteMedicineServlet?medicineName=<%=medicine.getMedicineName()%>"
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 				<%
 				}
