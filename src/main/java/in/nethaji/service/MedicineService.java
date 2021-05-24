@@ -5,7 +5,6 @@ import java.util.List;
 
 import in.nethaji.model.Medicine;
 import in.nethaji.validation.MedicineValidation;
-import in.nethaji.validation.PatientValidation;
 
 public class MedicineService {
 
