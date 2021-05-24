@@ -37,7 +37,7 @@
 					<td><%=doctor.getSpecialist()%></td>
 					<td><a
 						href="DeleteDoctorServlet?doctorName=<%=doctor.getDoctorName()%>"
-						class="btn btn-danger">Delete</a>
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 				<%
 				}
