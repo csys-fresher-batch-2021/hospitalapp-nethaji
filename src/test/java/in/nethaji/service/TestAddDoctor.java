@@ -48,8 +48,7 @@ public class TestAddDoctor {
 
 		try {
 			Doctor doctor = new Doctor(" ", "General");
-			boolean isAdded = DoctorService.addDoctor(doctor);
-			assertTrue(isAdded);
+			DoctorService.addDoctor(doctor);
 		} catch (Exception e) {
 			assertEquals("Invalid Doctor Name", e.getMessage());
 			e.printStackTrace();
