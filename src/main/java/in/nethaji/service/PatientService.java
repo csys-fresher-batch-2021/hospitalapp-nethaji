@@ -8,7 +8,6 @@ import java.util.List;
 
 import in.nethaji.validation.PatientValidation;
 import in.nethaji.exception.ServiceException;
-import in.nethaji.model.Doctor;
 import in.nethaji.model.Patient;
 
 public class PatientService {
