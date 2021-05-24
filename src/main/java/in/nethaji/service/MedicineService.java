@@ -3,6 +3,7 @@ package in.nethaji.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.nethaji.exception.ServiceException;
 import in.nethaji.model.Medicine;
 import in.nethaji.validation.MedicineValidation;
 
@@ -36,5 +37,24 @@ public class MedicineService {
 			isAdded = true;
 		}
 		return isAdded;
+	}
+	
+	public static boolean deleteMedicine(String medicineName) {
+		boolean isDeleted = false;
+		Medicine searchMedicine = null;
+		for (Medicine medicine : medicineList) {
+			if (medicine.getMedicineName().equalsIgnoreCase(medicineName)) {
+				searchMedicine = medicine;
+				break;
+			}
+		}
+		if (searchMedicine != null) {
+			medicineList.remove(searchMedicine);
+			isDeleted = true;
+		} else {
+			throw new ServiceException("Invalid Medicine Name");
+		}
+
+		return isDeleted;
 	}
 }
