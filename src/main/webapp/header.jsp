@@ -20,7 +20,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="ListPatients.jsp">Patients</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="ListMedicine.jsp">Medicine</a></li>
+					href="ListMedicines.jsp">Medicine</a></li>
 
 			</ul>
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">

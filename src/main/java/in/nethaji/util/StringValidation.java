@@ -23,6 +23,13 @@ public class StringValidation {
 			throw new UtilException(message);
 		}
 	}
+	
+	/**
+	 * This method is used to check the input of gender
+	 * @param gender
+	 * @param message
+	 * @return
+	 */
 
 	public static boolean isValidGender(String gender, String message) {
 		StringValidation.isValidString(gender, "Invalid Gender");

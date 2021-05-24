@@ -11,11 +11,15 @@ public class DoctorValidation {
 
 	public static boolean isValidDoctor(Doctor doctor) {
 		boolean isValid = false;
-		boolean doctorName = StringValidation.isValidString(doctor.getDoctorName(), "Invalid Doctor Name");
-		boolean specialist = StringValidation.isValidString(doctor.getSpecialist(), "Invalid specialist");
+		try {
+			boolean doctorName = StringValidation.isValidString(doctor.getDoctorName(), "Invalid Doctor Name");
+			boolean specialist = StringValidation.isValidString(doctor.getSpecialist(), "Invalid specialist");
 
-		if (doctorName && specialist) {
-			isValid = true;
+			if (doctorName && specialist) {
+				isValid = true;
+			}
+		} catch (Exception e) {
+			e.getMessage();
 		}
 		return isValid;
 
