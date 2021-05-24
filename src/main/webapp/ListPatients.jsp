@@ -24,6 +24,7 @@
 					<th scope="col">Age</th>
 					<th scope="col">Gender</th>
 					<th scope="col">reason</th>
+					<th scope="col">Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,6 +43,9 @@
 					<td><%=patient.getPatientAge()%></td>
 					<td><%=patient.getPatientGender()%></td>
 					<td><%=patient.getReason()%></td>
+					<td><a
+						href="DeletePatientServlet?patientName=<%=patient.getPatientName()%>"
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 				<%
 				}
