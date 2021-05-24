@@ -35,8 +35,8 @@
 				<tr>
 					<td><%=i%></td>
 					<td><%=medicine.getMedicineName()%></td>
-					<td><%=medicine.getMedicinePrice()%></td>
-					<td><%=medicine.getMedicineExpiry()%></td>
+					<td><%=medicine.getPrice()%></td>
+					<td><%=medicine.getExpiryDate()%></td>
 					<td><%=medicine.getQuantity()%></td>
 				</tr>
 				<%
@@ -48,7 +48,6 @@
 		<br />
 
 	</main>
-
 
 </body>
 </html>
