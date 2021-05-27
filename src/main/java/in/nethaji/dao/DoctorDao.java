@@ -23,7 +23,7 @@ public class DoctorDao {
 	 * @return doctor ArrayList
 	 * @throws ClassNotFoundException
 	 */
-	public List<Doctor> findAllDoctor() throws ClassNotFoundException, SQLException {
+	public List<Doctor> findAllDoctor(){
 		List<Doctor> doctorList = new ArrayList<>();
 		try {
 			// Step 1: Get the connection
@@ -41,7 +41,7 @@ public class DoctorDao {
 				// Store all doctor in list
 				doctorList.add(doctor);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e ) {
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(connection,pst,rs);
@@ -57,7 +57,7 @@ public class DoctorDao {
 	 * @throws SQLException
 	 */
 
-	public void save(Doctor doctor) throws SQLException, ClassNotFoundException {
+	public void save(Doctor doctor){
 		String sql = "insert into doctor(doctorName,specialist) values ( ?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -79,7 +79,7 @@ public class DoctorDao {
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public void delete(String doctorName) throws ClassNotFoundException {
+	public void delete(String doctorName){
 		String sql = "DELETE FROM doctor where doctorName = ?;";
 		try {
 			connection = ConnectionUtil.getConnection();

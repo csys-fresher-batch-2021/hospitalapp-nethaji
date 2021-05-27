@@ -27,7 +27,7 @@ public class MedicineDao {
 	 * @throws SQLException
 	 */
 
-	public List<Medicine> findAllMedicine() throws ClassNotFoundException, SQLException {
+	public List<Medicine> findAllMedicine(){
 		List<Medicine> medicineList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -63,7 +63,7 @@ public class MedicineDao {
 	 * @throws SQLException
 	 */
 
-	public void save(Medicine medicine) throws SQLException, ClassNotFoundException {
+	public void save(Medicine medicine){
 		String sql = "insert into medicine(medicineName,price,expiryDate,quantity) values ( ?,?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -87,7 +87,7 @@ public class MedicineDao {
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public void delete(String medicineName) throws ClassNotFoundException {
+	public void delete(String medicineName){
 		String sql = "DELETE FROM medicine where medicineName = ?;";
 		try {
 			connection = ConnectionUtil.getConnection();

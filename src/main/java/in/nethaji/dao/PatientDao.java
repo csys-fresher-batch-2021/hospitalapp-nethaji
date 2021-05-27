@@ -25,7 +25,7 @@ public class PatientDao {
 	 * @throws SQLException
 	 */
 
-	public List<Patient> findAllPatient() throws ClassNotFoundException, SQLException {
+	public List<Patient> findAllPatient(){
 		List<Patient> patientList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -57,7 +57,7 @@ public class PatientDao {
 	 * @throws SQLException
 	 */
 
-	public void save(Patient patient) throws SQLException, ClassNotFoundException {
+	public void save(Patient patient) {
 		String sql = "insert into patient(patientName,patientAge,patientGender,reason) values ( ?,?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -81,7 +81,7 @@ public class PatientDao {
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public void delete(String patientName) throws ClassNotFoundException {
+	public void delete(String patientName){
 		String sql = "DELETE FROM patient where patientName = ?;";
 		try {
 			connection = ConnectionUtil.getConnection();

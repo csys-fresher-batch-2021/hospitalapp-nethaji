@@ -1,6 +1,5 @@
 package in.nethaji.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import in.nethaji.validation.MedicineValidation;
 
 public class MedicineService {
 
-	
 	MedicineDao medicineDao = new MedicineDao();
 
 	/**
@@ -21,42 +19,41 @@ public class MedicineService {
 	 */
 	public List<Medicine> getMedicineList() {
 		List<Medicine> medicineList = new ArrayList<>();
-		try {
-			medicineList = medicineDao.findAllMedicine();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		medicineList = medicineDao.findAllMedicine();
 		return medicineList;
 	}
-	
+
 	/**
 	 * This method is used to add medicine
+	 * 
 	 * @param medicine
 	 * @return
-	 * @throws ClassNotFoundException 
 	 */
 
-	public boolean addMedicine(Medicine medicine) throws ClassNotFoundException {
+	public boolean addMedicine(Medicine medicine) {
 		boolean isAdded = false;
 		if (MedicineValidation.isValidMedicine(medicine)) {
-			try {
-				medicineDao.save(medicine);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			medicineDao.save(medicine);
 			isAdded = true;
 		}
 		return isAdded;
 	}
-	
-	public boolean deleteMedicine(String medicineName) throws ClassNotFoundException {
+
+	/**
+	 * This method is used to delete medicine in arrayList
+	 * 
+	 * @param medicineName
+	 * @return
+	 */
+
+	public boolean deleteMedicine(String medicineName) {
 		boolean isDeleted = false;
-		
-			if (StringValidation.isValidString(medicineName,"Invalid Medicine Name")) {
-				medicineDao.delete(medicineName);
-				isDeleted = true;
-			}
-		
+
+		if (StringValidation.isValidString(medicineName, "Invalid Medicine Name")) {
+			medicineDao.delete(medicineName);
+			isDeleted = true;
+		}
+
 		return isDeleted;
 	}
 }

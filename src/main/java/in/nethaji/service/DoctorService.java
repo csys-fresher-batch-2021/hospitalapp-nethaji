@@ -1,6 +1,5 @@
 package in.nethaji.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,15 +16,10 @@ public class DoctorService {
 	 * This method is used to get the list of doctors
 	 * 
 	 * @return
-	 * @throws ClassNotFoundException
 	 */
 	public List<Doctor> getDoctors() {
 		List<Doctor> doctorList = new ArrayList<>();
-		try {
-			doctorList = doctorDao.findAllDoctor();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		doctorList = doctorDao.findAllDoctor();
 		return doctorList;
 	}
 
@@ -35,14 +29,10 @@ public class DoctorService {
 	 * @param obj
 	 */
 
-	public boolean addDoctor(Doctor doctor) throws ClassNotFoundException {
+	public boolean addDoctor(Doctor doctor) {
 		boolean isAdded = false;
 		if (DoctorValidation.isValidDoctor(doctor)) {
-			try {
-				doctorDao.save(doctor);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			doctorDao.save(doctor);
 			isAdded = true;
 		}
 		return isAdded;
@@ -53,10 +43,9 @@ public class DoctorService {
 	 * 
 	 * @param doctorName
 	 * @return
-	 * @throws ClassNotFoundException
 	 */
 
-	public boolean deleteDoctor(String doctorName) throws ClassNotFoundException {
+	public boolean deleteDoctor(String doctorName) {
 
 		boolean isDeleted = false;
 		if (StringValidation.isValidString(doctorName, "Invalid Doctor Name")) {
