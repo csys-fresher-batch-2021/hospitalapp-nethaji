@@ -1,6 +1,5 @@
 package in.nethaji.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.nethaji.dao.MedicineDao;
