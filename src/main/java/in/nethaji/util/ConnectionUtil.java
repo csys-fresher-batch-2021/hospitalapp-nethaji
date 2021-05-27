@@ -10,23 +10,29 @@ import in.nethaji.exception.DBException;
 
 public class ConnectionUtil {
 
-	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		String driverClass = "org.postgresql.Driver";
+	private ConnectionUtil() {
+		// default Constructor
+	}
 
-		String url = "jdbc:postgresql://localhost/Hospital_db";
+	private static String driverClass = System.getenv("spring.datasource.driver-class-name");
+	private static String url = System.getenv("spring.datasource.url");
+	private static String username = System.getenv("spring.datasource.username");
+	private static String password = System.getenv("spring.datasource.password");
 
-		String username = "postgres";
-
-		String password = "root";
-
-		Class.forName(driverClass);
-
-		Connection connection = DriverManager.getConnection(url, username, password);
-		
-		System.out.println("Connection created");
+	public static Connection getConnection() {
+		Connection connection = null;
+		try {
+			// Step 1: Load the database driver into memory ( ClassNotFoundException )
+			Class.forName(driverClass);
+			// Step 2: Get the Database Connection (SQLException)
+			connection = DriverManager.getConnection(url, username, password);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Unable to get the database connection");
+		}
 		return connection;
 	}
-	
+
 	public static void close(Connection connection, PreparedStatement pst, ResultSet rs) {
 		try {
 			if (rs != null) {
