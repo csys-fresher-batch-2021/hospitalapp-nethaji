@@ -10,10 +10,16 @@
 <title>HospitalApp - Patients</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+<% 
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_ADMIN");
+String role = (String)session.getAttribute("ROLE"); %>
+	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Patient</h3>
+		<% if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+
 		<a href="AddPatient.jsp">Add Patient</a><br />
+		<% } %>
 		<table class="table table-bordered">
 			<caption>List of Available Patients</caption>
 			<thead>

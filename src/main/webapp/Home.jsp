@@ -1,10 +1,10 @@
 <!Doctype>
-<html>
+<html lang="en">
 <head>
 <title>HospitalApp</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Hospital Management System</h3>
 
