@@ -8,8 +8,6 @@
 	<main class="container-fluid">
 		<h3>Hospital Management System</h3>
 
-
-
 	</main>
 </body>
 </html>

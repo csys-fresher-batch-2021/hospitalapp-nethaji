@@ -1,26 +1,31 @@
 package in.nethaji.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import in.nethaji.validation.DoctorValidation;
-import in.nethaji.exception.ServiceException;
+import in.nethaji.dao.DoctorDao;
 import in.nethaji.model.Doctor;
+import in.nethaji.util.StringValidation;
 
 public class DoctorService {
 
-	private DoctorService() {
-		// Default Constructor
-	}
-
-	private static final List<Doctor> doctorList = new ArrayList<>();
+	DoctorDao doctorDao = new DoctorDao();
 
 	/**
 	 * This method is used to get the list of doctors
 	 * 
 	 * @return
+	 * @throws ClassNotFoundException
 	 */
-	public static List<Doctor> getDoctors() {
+	public List<Doctor> getDoctors() {
+		List<Doctor> doctorList = new ArrayList<>();
+		try {
+			doctorList = doctorDao.findAllDoctor();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		return doctorList;
 	}
 
@@ -30,10 +35,14 @@ public class DoctorService {
 	 * @param obj
 	 */
 
-	public static boolean addDoctor(Doctor doctor) {
+	public boolean addDoctor(Doctor doctor) throws ClassNotFoundException {
 		boolean isAdded = false;
 		if (DoctorValidation.isValidDoctor(doctor)) {
-			doctorList.add(doctor);
+			try {
+				doctorDao.save(doctor);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			isAdded = true;
 		}
 		return isAdded;
@@ -44,24 +53,17 @@ public class DoctorService {
 	 * 
 	 * @param doctorName
 	 * @return
+	 * @throws ClassNotFoundException
 	 */
 
-	public static boolean deleteDoctor(String doctorName) {
+	public boolean deleteDoctor(String doctorName) throws ClassNotFoundException {
 
 		boolean isDeleted = false;
-		Doctor searchDoctor = null;
-		for (Doctor doctor : doctorList) {
-			if (doctor.getDoctorName().equalsIgnoreCase(doctorName)) {
-				searchDoctor = doctor;
-				break;
-			}
-		}
-		if (searchDoctor != null) {
-			doctorList.remove(searchDoctor);
+		if (StringValidation.isValidString(doctorName, "Invalid Doctor Name")) {
+			doctorDao.delete(doctorName);
 			isDeleted = true;
-		} else {
-			throw new ServiceException("Invalid Doctor Name");
 		}
+
 		return isDeleted;
 	}
 

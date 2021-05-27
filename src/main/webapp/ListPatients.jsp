@@ -27,33 +27,44 @@
 					<th scope="col">Delete</th>
 				</tr>
 			</thead>
-			<tbody>
-				<%
-				List<Patient> patientInfo = PatientService.getPatients();
-				int i = 0;
-				int j = 100;
-				for (Patient patient : patientInfo) {
-					i++;
-					j++;
-				%>
-				<tr>
-					<td><%=i%></td>
-					<td><%=j%></td>
-					<td><%=patient.getPatientName()%></td>
-					<td><%=patient.getPatientAge()%></td>
-					<td><%=patient.getPatientGender()%></td>
-					<td><%=patient.getReason()%></td>
-					<td><a
-						href="DeletePatientServlet?patientName=<%=patient.getPatientName()%>"
-						class="btn btn-danger">Delete</a></td>
-				</tr>
-				<%
-				}
-				%>
+			<tbody id="patient-tbl">
 			</tbody>
 		</table>
 
 		<br />
+
+		<script>
+function getAllPatient(){
+	console.log("Fetching all Patients");
+	let url = "DisplayPatientDetails";
+	fetch(url).then(res=> res.json()).then(res=>{
+		let patients = res;
+		console.log("Got response from servlet");
+		console.log(patients);
+		let content = "";
+		i=0;
+		j=100;
+		for(let patient of patients){
+			content +="<tr> "+
+			"<td>" + ++i +"</td>" +
+			"<td>"+ ++j +"</td>" +
+			"<td>"+patient.patientName +"</td>" +
+			"<td>"+patient.patientAge+ 	"</td>" + 
+			"<td>"+patient.patientGender+"</td>" +
+			"<td>"+patient.reason+"</td>"+
+			"<td><a href='DeletePatientServlet?patientName=" + patient.patientName +"' class='btn btn-danger'>Delete</a></td>"+
+			"</tr>";
+		}
+		console.log(content);
+		
+		document.querySelector("#patient-tbl").innerHTML= content;
+		
+	});
+	
+}
+getAllPatient();
+</script>
+
 
 	</main>
 

@@ -1,26 +1,31 @@
 package in.nethaji.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.nethaji.exception.ServiceException;
+import in.nethaji.dao.MedicineDao;
 import in.nethaji.model.Medicine;
+import in.nethaji.util.StringValidation;
 import in.nethaji.validation.MedicineValidation;
 
 public class MedicineService {
 
-	private MedicineService() {
-		// Default Constructor
-	}
-
-	private static final List<Medicine> medicineList = new ArrayList<>();
+	
+	MedicineDao medicineDao = new MedicineDao();
 
 	/**
-	 * This method is used to get the list of doctors
+	 * This method is used to get the list of medicine
 	 * 
 	 * @return
 	 */
-	public static List<Medicine> getMedicineList() {
+	public List<Medicine> getMedicineList() {
+		List<Medicine> medicineList = new ArrayList<>();
+		try {
+			medicineList = medicineDao.findAllMedicine();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		return medicineList;
 	}
 	
@@ -28,33 +33,30 @@ public class MedicineService {
 	 * This method is used to add medicine
 	 * @param medicine
 	 * @return
+	 * @throws ClassNotFoundException 
 	 */
 
-	public static boolean addMedicine(Medicine medicine) {
+	public boolean addMedicine(Medicine medicine) throws ClassNotFoundException {
 		boolean isAdded = false;
 		if (MedicineValidation.isValidMedicine(medicine)) {
-			medicineList.add(medicine);
+			try {
+				medicineDao.save(medicine);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			isAdded = true;
 		}
 		return isAdded;
 	}
 	
-	public static boolean deleteMedicine(String medicineName) {
+	public boolean deleteMedicine(String medicineName) throws ClassNotFoundException {
 		boolean isDeleted = false;
-		Medicine searchMedicine = null;
-		for (Medicine medicine : medicineList) {
-			if (medicine.getMedicineName().equalsIgnoreCase(medicineName)) {
-				searchMedicine = medicine;
-				break;
+		
+			if (StringValidation.isValidString(medicineName,"Invalid Medicine Name")) {
+				medicineDao.delete(medicineName);
+				isDeleted = true;
 			}
-		}
-		if (searchMedicine != null) {
-			medicineList.remove(searchMedicine);
-			isDeleted = true;
-		} else {
-			throw new ServiceException("Invalid Medicine Name");
-		}
-
+		
 		return isDeleted;
 	}
 }

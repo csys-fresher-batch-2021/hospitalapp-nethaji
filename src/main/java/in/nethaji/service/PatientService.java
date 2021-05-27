@@ -1,59 +1,52 @@
-/**
- * 
- */
 package in.nethaji.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import in.nethaji.validation.PatientValidation;
-import in.nethaji.exception.ServiceException;
+import in.nethaji.dao.PatientDao;
 import in.nethaji.model.Patient;
+import in.nethaji.util.StringValidation;
 
 public class PatientService {
 
-	private PatientService() {
-		// Default Constructor
-	}
-
-	private static final List<Patient> patientList = new ArrayList<>();
+	PatientDao patientDao = new PatientDao();
 
 	/**
 	 * This method is used to get the list of doctors
 	 * 
 	 * @return
 	 */
-	public static List<Patient> getPatients() {
+	public List<Patient> getPatients() {
+		List<Patient> patientList = new ArrayList<>();
+		try {
+			patientList = patientDao.findAllPatient();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		return patientList;
 	}
 
-	public static boolean addPatient(Patient patient) {
+	public boolean addPatient(Patient patient) throws ClassNotFoundException {
 		boolean isAdded = false;
 		if (PatientValidation.isValidPatient(patient)) {
-			patientList.add(patient);
+			try {
+				patientDao.save(patient);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			isAdded = true;
 		}
 		return isAdded;
 	}
 
-	public static boolean deletePatient(String patientName) {
+	public boolean deletePatient(String patientName) throws ClassNotFoundException {
 		boolean isDeleted = false;
-		Patient searchPatient = null;
-		for (Patient patient : patientList) {
-			if (patient.getPatientName().equalsIgnoreCase(patientName)) {
-				searchPatient = patient;
-				break;
-			}
+		if (StringValidation.isValidString(patientName, "Invalid Patient Name")) {
+			patientDao.delete(patientName);
 		}
-		if (searchPatient != null) {
-			patientList.remove(searchPatient);
-			isDeleted = true;
-		} else {
-			throw new ServiceException("Invalid Patient Name");
-		}
-
 		return isDeleted;
-
 	}
 
 }

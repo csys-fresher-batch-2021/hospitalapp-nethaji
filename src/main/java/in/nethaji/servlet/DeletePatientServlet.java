@@ -22,7 +22,8 @@ public class DeletePatientServlet extends HttpServlet {
 
 		try {
 			String patientName = request.getParameter("patientName");
-			boolean isDeleted = PatientService.deletePatient(patientName);
+			PatientService patientService = new PatientService();
+			boolean isDeleted = patientService.deletePatient(patientName);
 			if (isDeleted) {
 				response.sendRedirect("ListPatients.jsp");
 			} else {

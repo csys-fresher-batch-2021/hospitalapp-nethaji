@@ -16,9 +16,9 @@ public class DateValidation {
 	 * @return
 	 */
 	
-	public static boolean isDateValid(String value,String message) {
+	public static boolean isDateValid(LocalDate value,String message) {
 		boolean isValid = false;
-		LocalDate expiryDate = LocalDate.parse(value);
+		LocalDate expiryDate = value;
 		LocalDate currentDate = LocalDate.now();
 		if(expiryDate.isAfter(currentDate)) {
 			isValid = true;

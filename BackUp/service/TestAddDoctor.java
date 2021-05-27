@@ -11,16 +11,20 @@ public class TestAddDoctor {
 
 	/**
 	 * This is method is used to test doctor added
+	 * 
+	 * @throws ClassNotFoundException
 	 */
 
 	@Test
 	public void TestAddDoctor1() {
-
-		String doctorName = "Radha Krishnan";
-		String specialist = "ENT";
-		Doctor doctor = new Doctor(doctorName, specialist);
-		boolean isAdded = DoctorService.addDoctor(doctor);
-		assertTrue(isAdded);
+		try {
+			Doctor doctor = new Doctor("Radha Krishnan", "ENT");
+			DoctorService doctorService = new DoctorService();
+			boolean isAdded = doctorService.addDoctor(doctor);
+			assertTrue(isAdded);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -32,7 +36,8 @@ public class TestAddDoctor {
 
 		try {
 			Doctor doctor = new Doctor("Nethaji", "Cardiology");
-			boolean isAdded = DoctorService.addDoctor(doctor);
+			DoctorService doctorService = new DoctorService();
+			boolean isAdded = doctorService.addDoctor(doctor);
 			assertTrue(isAdded);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,7 +53,8 @@ public class TestAddDoctor {
 
 		try {
 			Doctor doctor = new Doctor(" ", "General");
-			DoctorService.addDoctor(doctor);
+			DoctorService doctorService = new DoctorService();
+			doctorService.addDoctor(doctor);
 		} catch (Exception e) {
 			assertEquals("Invalid Doctor Name", e.getMessage());
 			e.printStackTrace();

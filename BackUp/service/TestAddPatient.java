@@ -12,7 +12,8 @@ public class TestAddPatient {
 	public void testAddPatient1() {
 		try {
 			Patient patient1 = new Patient("Ponram", 10, "male", "Heart Problems");
-			boolean isAdded = PatientService.addPatient(patient1);
+			PatientService patientService = new PatientService();
+			boolean isAdded = patientService.addPatient(patient1);
 			assertTrue(isAdded);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -26,7 +27,8 @@ public class TestAddPatient {
 	public void testAddPatient2() {
 		try {
 			Patient patient1 = new Patient(null, 10, "male", "Heart Problems");
-			PatientService.addPatient(patient1);
+			PatientService patientService = new PatientService();
+			patientService.addPatient(patient1);
 		} catch (Exception e) {
 			assertEquals("Invalid Patient Name", e.getMessage());
 		}
