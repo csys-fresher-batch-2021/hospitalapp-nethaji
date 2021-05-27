@@ -21,8 +21,7 @@ input {
 	margin: 5px 0;
 	color: #008CBA;
 	box-sizing: border-box;
-	border: 2px solid ;
-	border-color: #008CBA;
+	border: 2px solid  rgb(0, 140, 186);
 	border-bottom: 2px solid #008CBA;
 }
 
