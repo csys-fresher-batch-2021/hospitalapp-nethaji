@@ -10,10 +10,15 @@
 <title>HospitalApp - Medicine</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+<% 
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_ADMIN");
+String role = (String)session.getAttribute("ROLE"); %>
+	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Medicine</h3>
+		<%if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 		<a href="AddMedicine.jsp">Add Medicine</a><br />
+		<% } %>
 		<table class="table table-bordered">
 			<caption>List of Available Medicine</caption>
 			<thead>
@@ -40,9 +45,11 @@
 					<td><%=medicine.getPrice()%></td>
 					<td><%=medicine.getExpiryDate()%></td>
 					<td><%=medicine.getQuantity()%></td>
+					<%if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 					<td><a
 						href="DeleteMedicineServlet?medicineName=<%=medicine.getMedicineName()%>"
 						class="btn btn-danger">Delete</a></td>
+					<% } %>
 				</tr>
 				<%
 				}

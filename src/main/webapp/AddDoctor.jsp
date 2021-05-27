@@ -11,7 +11,7 @@
 <title>HospitalApp - Add Doctor</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Add Doctor Record</h3>
 		<form action="AddDoctorServlet">

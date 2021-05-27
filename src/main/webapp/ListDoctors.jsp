@@ -10,10 +10,16 @@
 <title>List of Doctors</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+<%
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_ADMIN");
+String role = (String)session.getAttribute("ROLE");
+%>
+	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Doctors</h3>
+		<%if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 		<a href="AddDoctor.jsp">Add Doctor</a><br />
+		<% } %>
 		<table class="table table-bordered">
 			<caption>List of Available Doctors</caption>
 			<thead>
@@ -36,9 +42,11 @@
 					<td><%=i%></td>
 					<td>Dr.<%=doctor.getDoctorName()%></td>
 					<td><%=doctor.getSpecialist()%></td>
+					<%if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 					<td><a
 						href="DeleteDoctorServlet?doctorName=<%=doctor.getDoctorName()%>"
 						class="btn btn-danger">Delete</a></td>
+					<%} %>
 				</tr>
 				<%
 				}
