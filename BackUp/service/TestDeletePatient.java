@@ -14,7 +14,8 @@ public class TestDeletePatient {
 
 	@Before
 	public void setUp() throws Exception {
-		List<Patient> patientList = PatientService.getPatients();
+		PatientService patientService = new PatientService();
+		List<Patient> patientList = patientService.getPatients();
 
 		Patient patient1 = new Patient("Ponram", 10, "male", "Heart Problems");
 		Patient patient2 = new Patient("Vibin", 40, "male", "Fever");
@@ -26,13 +27,15 @@ public class TestDeletePatient {
 
 	@After
 	public void tearDown() throws Exception {
-		PatientService.getPatients().clear();
+		PatientService patientService = new PatientService();
+		patientService.getPatients().clear();
 	}
 
 	@Test
 	public void testDeletePatient1() {
 		try {
-			boolean isDeleted = PatientService.deletePatient("Vibin");
+			PatientService patientService = new PatientService();
+			boolean isDeleted = patientService.deletePatient("Ponram");
 			assertTrue(isDeleted);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,10 +46,11 @@ public class TestDeletePatient {
 	 * This method is used to test delete Patient.Here null value is checked.
 	 */
 	@Test
-	public void testDeleteDoctor3() {
+	public void testDeleteDoctor2() {
 
 		try {
-			PatientService.deletePatient(null);
+			PatientService patientService = new PatientService();
+			patientService.deletePatient(null);
 		} catch (Exception e) {
 			assertEquals("Invalid Patient Name", e.getMessage());
 			e.printStackTrace();

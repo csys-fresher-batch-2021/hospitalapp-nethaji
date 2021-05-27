@@ -16,7 +16,8 @@ public class TestDeleteDoctor {
 
 	@Before
 	public void setUp() throws Exception {
-		List<Doctor> doctorList = DoctorService.getDoctors();
+		DoctorService doctorService = new DoctorService();
+		List<Doctor> doctorList = doctorService.getDoctors();
 		Doctor doctor1 = new Doctor("Gopala Krishnan", "ENT");
 		Doctor doctor2 = new Doctor("Venkataraman", "General");
 		Doctor doctor3 = new Doctor("Rajaraghupathy", "Cardiology");
@@ -30,7 +31,8 @@ public class TestDeleteDoctor {
 
 	@After
 	public void tearDown() throws Exception {
-		DoctorService.getDoctors().clear();
+		DoctorService doctorService = new DoctorService();
+		doctorService.getDoctors().clear();
 	}
 
 	/**
@@ -41,7 +43,8 @@ public class TestDeleteDoctor {
 	public void testDeleteDoctor1() {
 
 		try {
-			boolean isDeleted = DoctorService.deleteDoctor("Gopalachari");
+			DoctorService doctorService = new DoctorService();
+			boolean isDeleted = doctorService.deleteDoctor("Gopalachari");
 			assertTrue(isDeleted);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +59,8 @@ public class TestDeleteDoctor {
 	public void testDeleteDoctor2() {
 
 		try {
-			boolean isDeleted = DoctorService.deleteDoctor("venkataraman");
+			DoctorService doctorService = new DoctorService();
+			boolean isDeleted = doctorService.deleteDoctor("venkataraman");
 			assertTrue(isDeleted);
 		} catch (Exception e) {
 			fail();
@@ -70,7 +74,8 @@ public class TestDeleteDoctor {
 	public void testDeleteDoctor3() {
 
 		try {
-			DoctorService.deleteDoctor(null);
+			DoctorService doctorService = new DoctorService();
+			doctorService.deleteDoctor(null);
 		} catch (Exception e) {
 			assertEquals("Invalid Doctor Name", e.getMessage());
 			e.printStackTrace();

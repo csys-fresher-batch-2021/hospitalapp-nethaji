@@ -1,27 +1,23 @@
 package in.nethaji.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.nethaji.validation.DoctorValidation;
-import in.nethaji.exception.ServiceException;
+import in.nethaji.dao.DoctorDao;
 import in.nethaji.model.Doctor;
+import in.nethaji.util.StringValidation;
 
 public class DoctorService {
 
-	private DoctorService() {
-		// Default Constructor
-	}
-
-	private static final List<Doctor> doctorList = new ArrayList<>();
+	DoctorDao doctorDao = new DoctorDao();
 
 	/**
 	 * This method is used to get the list of doctors
 	 * 
 	 * @return
 	 */
-	public static List<Doctor> getDoctors() {
-		return doctorList;
+	public List<Doctor> getDoctors() {
+		return doctorDao.findAllDoctor();
 	}
 
 	/**
@@ -30,10 +26,10 @@ public class DoctorService {
 	 * @param obj
 	 */
 
-	public static boolean addDoctor(Doctor doctor) {
+	public boolean addDoctor(Doctor doctor) {
 		boolean isAdded = false;
 		if (DoctorValidation.isValidDoctor(doctor)) {
-			doctorList.add(doctor);
+			doctorDao.save(doctor);
 			isAdded = true;
 		}
 		return isAdded;
@@ -46,22 +42,14 @@ public class DoctorService {
 	 * @return
 	 */
 
-	public static boolean deleteDoctor(String doctorName) {
+	public boolean deleteDoctor(String doctorName) {
 
 		boolean isDeleted = false;
-		Doctor searchDoctor = null;
-		for (Doctor doctor : doctorList) {
-			if (doctor.getDoctorName().equalsIgnoreCase(doctorName)) {
-				searchDoctor = doctor;
-				break;
-			}
-		}
-		if (searchDoctor != null) {
-			doctorList.remove(searchDoctor);
+		if (StringValidation.isValidString(doctorName, "Invalid Doctor Name")) {
+			doctorDao.delete(doctorName);
 			isDeleted = true;
-		} else {
-			throw new ServiceException("Invalid Doctor Name");
 		}
+
 		return isDeleted;
 	}
 

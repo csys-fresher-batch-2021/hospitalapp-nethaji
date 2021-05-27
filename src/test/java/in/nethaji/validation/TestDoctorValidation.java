@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import in.nethaji.validation.DoctorValidation;
 import in.nethaji.model.Doctor;
 
 public class TestDoctorValidation {

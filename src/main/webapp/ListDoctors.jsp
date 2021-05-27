@@ -26,7 +26,8 @@
 			</thead>
 			<tbody>
 				<%
-				List<Doctor> doctorInfo = DoctorService.getDoctors();
+				DoctorService doctorService = new DoctorService();
+				List<Doctor> doctorInfo = doctorService.getDoctors();
 				int i = 0;
 				for (Doctor doctor : doctorInfo) {
 					i++;

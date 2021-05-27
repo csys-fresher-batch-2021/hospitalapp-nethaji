@@ -1,58 +1,54 @@
 package in.nethaji.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import in.nethaji.exception.ServiceException;
+import in.nethaji.dao.MedicineDao;
 import in.nethaji.model.Medicine;
+import in.nethaji.util.StringValidation;
 import in.nethaji.validation.MedicineValidation;
 
 public class MedicineService {
 
-	private MedicineService() {
-		// Default Constructor
-	}
-
-	private static final List<Medicine> medicineList = new ArrayList<>();
+	MedicineDao medicineDao = new MedicineDao();
 
 	/**
-	 * This method is used to get the list of doctors
+	 * This method is used to get the list of medicine
 	 * 
 	 * @return
 	 */
-	public static List<Medicine> getMedicineList() {
-		return medicineList;
+	public List<Medicine> getMedicineList() {
+		return medicineDao.findAllMedicine();
 	}
-	
+
 	/**
 	 * This method is used to add medicine
+	 * 
 	 * @param medicine
 	 * @return
 	 */
 
-	public static boolean addMedicine(Medicine medicine) {
+	public boolean addMedicine(Medicine medicine) {
 		boolean isAdded = false;
 		if (MedicineValidation.isValidMedicine(medicine)) {
-			medicineList.add(medicine);
+			medicineDao.save(medicine);
 			isAdded = true;
 		}
 		return isAdded;
 	}
-	
-	public static boolean deleteMedicine(String medicineName) {
+
+	/**
+	 * This method is used to delete medicine in arrayList
+	 * 
+	 * @param medicineName
+	 * @return
+	 */
+
+	public boolean deleteMedicine(String medicineName) {
 		boolean isDeleted = false;
-		Medicine searchMedicine = null;
-		for (Medicine medicine : medicineList) {
-			if (medicine.getMedicineName().equalsIgnoreCase(medicineName)) {
-				searchMedicine = medicine;
-				break;
-			}
-		}
-		if (searchMedicine != null) {
-			medicineList.remove(searchMedicine);
+
+		if (StringValidation.isValidString(medicineName, "Invalid Medicine Name")) {
+			medicineDao.delete(medicineName);
 			isDeleted = true;
-		} else {
-			throw new ServiceException("Invalid Medicine Name");
 		}
 
 		return isDeleted;

@@ -1,6 +1,7 @@
 package in.nethaji.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +25,16 @@ public class AddMedicineServlet extends HttpServlet {
 		try {
 			String medicineName = request.getParameter("medicineName");
 			double price = Double.parseDouble(request.getParameter("price"));
-			String expiryDate = request.getParameter("expiryDate");
+			LocalDate expiryDate = LocalDate.parse(request.getParameter("expiryDate"));
 			int quantity = Integer.parseInt(request.getParameter("quantity"));
-			Medicine medicine = new Medicine(medicineName, price, expiryDate, quantity);
-			MedicineService.addMedicine(medicine);
+			Medicine medicine = new Medicine();
+			medicine.setMedicineName(medicineName);
+			medicine.setPrice(price);
+			medicine.setExpiryDate(expiryDate);
+			medicine.setQuantity(quantity);
+			
+			MedicineService medicineService = new MedicineService();
+			medicineService.addMedicine(medicine);
 			response.sendRedirect("ListMedicines.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

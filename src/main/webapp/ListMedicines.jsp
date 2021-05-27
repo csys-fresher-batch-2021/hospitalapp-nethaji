@@ -28,7 +28,8 @@
 			</thead>
 			<tbody>
 				<%
-				List<Medicine> medicineInfo = MedicineService.getMedicineList();
+				MedicineService medicineService = new MedicineService();
+				List<Medicine> medicineInfo = medicineService.getMedicineList();
 				int i = 10;
 				for (Medicine medicine : medicineInfo) {
 					i++;

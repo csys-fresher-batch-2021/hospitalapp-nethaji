@@ -24,7 +24,8 @@ public class AddDoctorServlet extends HttpServlet {
 		String specialist = request.getParameter("specialist");
 		try {
 			Doctor doctor = new Doctor(doctorName, specialist);
-			DoctorService.addDoctor(doctor);
+			DoctorService doctorService = new DoctorService();
+			doctorService.addDoctor(doctor);
 			response.sendRedirect("ListDoctors.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

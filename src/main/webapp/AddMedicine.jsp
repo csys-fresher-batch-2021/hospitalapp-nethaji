@@ -16,12 +16,12 @@
 				placeholder="Enter Medicine name" required autofocus /> <br /> <br />
 			<label for="price">Price:</label> <input type="text" id="price"
 				name="price" min="1" max="10000"> <br /> <br /> <label
-				for="expiryDate">Expired Date:</label> <input type="date" id="expiryDate"
-				name="expiryDate"> <br /><br />
-				<label for="quantity">Quantity:</label> <input type="number" id="quantity"
-				name="quantity" min="1" max="1000"> <br /> <br /> 
-				
-				<button type="Submit">Add Medicine</button>
+				for="expiryDate">Expired Date:</label> <input type="date"
+				id="expiryDate" name="expiryDate"> <br /> <br /> <label
+				for="quantity">Quantity:</label> <input type="number" id="quantity"
+				name="quantity" min="1" max="1000"> <br /> <br />
+
+			<button type="Submit">Add Medicine</button>
 		</form>
 	</main>
 </body>

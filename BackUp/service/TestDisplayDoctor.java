@@ -13,7 +13,8 @@ public class TestDisplayDoctor {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		List<Doctor> doctorList = DoctorService.getDoctors();
+		DoctorService doctorService = new DoctorService();
+		List<Doctor> doctorList = doctorService.getDoctors();
 		Doctor doctor1 = new Doctor("Gopala Krishnan", "ENT");
 		Doctor doctor2 = new Doctor("Venkataraman", "General");
 		Doctor doctor3 = new Doctor("Rajaraghupathy", "Cardiology");
@@ -31,8 +32,9 @@ public class TestDisplayDoctor {
 
 	@Test
 	public void testGetDoctors() {
-		List<Doctor> doctorList = DoctorService.getDoctors();
-		assertEquals(4, doctorList.size());
+		DoctorService doctorService = new DoctorService();
+		List<Doctor> doctorList = doctorService.getDoctors();
+		assertEquals(5, doctorList.size());
 	}
 
 }

@@ -27,7 +27,8 @@ public class AddPatientServlet extends HttpServlet {
 		try {
 			int patientAge = Integer.parseInt(age);
 			Patient patient = new Patient(patientName, patientAge, gender, reason);
-			PatientService.addPatient(patient);
+			PatientService patientService = new PatientService();
+			patientService.addPatient(patient);
 			response.sendRedirect("ListPatients.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
