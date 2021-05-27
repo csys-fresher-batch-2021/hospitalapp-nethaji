@@ -18,9 +18,7 @@ public class PatientService {
 	 * @return
 	 */
 	public List<Patient> getPatients() {
-		List<Patient> patientList = new ArrayList<>();
-		patientList = patientDao.findAllPatient();
-		return patientList;
+		return patientDao.findAllPatient();
 	}
 	
 	/**

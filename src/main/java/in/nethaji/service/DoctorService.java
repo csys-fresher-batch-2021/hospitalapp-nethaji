@@ -1,6 +1,5 @@
 package in.nethaji.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.nethaji.validation.DoctorValidation;
@@ -18,9 +17,7 @@ public class DoctorService {
 	 * @return
 	 */
 	public List<Doctor> getDoctors() {
-		List<Doctor> doctorList = new ArrayList<>();
-		doctorList = doctorDao.findAllDoctor();
-		return doctorList;
+		return doctorDao.findAllDoctor();
 	}
 
 	/**
