@@ -1,5 +1,5 @@
 <!Doctype>
-<html>
+<html lang="en">
 <head>
 <title>HospitalApp</title>
 </head>

@@ -5,6 +5,10 @@ import java.util.HashMap;
 import in.nethaji.validation.LoginValidation;
 
 public class AdminLogin {
+	
+	private AdminLogin() {
+		//Default Constructor
+	}
 
 	private static final HashMap<String, String> adminLoginDetails = new HashMap<>();
 
@@ -22,10 +26,8 @@ public class AdminLogin {
 	public static boolean checkAdminLogin(String username, String password) {
 		boolean isValid = false;
 		try {
-			if (LoginValidation.isLoginValidation(username, password)) {
-				if (adminLoginDetails.containsKey(username) && adminLoginDetails.get(username).equals(password)) {
+			if (LoginValidation.isLoginValidation(username, password) && adminLoginDetails.containsKey(username) && adminLoginDetails.get(username).equals(password)) {
 					isValid = true;
-				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
