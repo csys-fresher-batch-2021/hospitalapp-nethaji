@@ -9,7 +9,7 @@ public class TestIntegerValidation {
 	@Test
 	public void testIntegerValidation1() {
 		try {
-			boolean isValid = IntegerValiadation.isIntValid(10, null);
+			boolean isValid = IntegerValidation.isIntValid(10, null);
 			assertTrue(isValid);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -19,7 +19,7 @@ public class TestIntegerValidation {
 	@Test
 	public void testIntegerValidation2() {
 		try {
-			boolean isValid = IntegerValiadation.isIntValid(-10, null);
+			boolean isValid = IntegerValidation.isIntValid(-10, null);
 			assertTrue(isValid);
 		} catch (Exception e) {
 			e.printStackTrace();

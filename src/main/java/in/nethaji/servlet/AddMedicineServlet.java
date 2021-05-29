@@ -26,11 +26,13 @@ public class AddMedicineServlet extends HttpServlet {
 			String medicineName = request.getParameter("medicineName");
 			double price = Double.parseDouble(request.getParameter("price"));
 			LocalDate expiryDate = LocalDate.parse(request.getParameter("expiryDate"));
+			int usedIn = Integer.parseInt(request.getParameter("expiry"));
 			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			Medicine medicine = new Medicine();
 			medicine.setMedicineName(medicineName);
 			medicine.setPrice(price);
 			medicine.setExpiryDate(expiryDate);
+			medicine.setUsedIn(usedIn);
 			medicine.setQuantity(quantity);
 			
 			MedicineService medicineService = new MedicineService();

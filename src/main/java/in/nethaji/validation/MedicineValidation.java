@@ -22,8 +22,9 @@ public class MedicineValidation {
 			boolean medicineName = StringValidation.isValidString(medicine.getMedicineName(), "Invalid Medicine Name");
 			boolean price = PriceValidation.isValidPrice(medicine.getPrice(), "Invalid Price");
 			boolean expiryDate = DateValidation.isDateValid(medicine.getExpiryDate(), "Medicine is Expired");
-			boolean quantity = IntegerValiadation.isIntValid(medicine.getQuantity(), "Invalid Quantity");
-			if (medicineName && price && expiryDate && quantity) {
+			boolean usedIn = IntegerValidation.isIntValid(medicine.getUsedIn(),"Invalid days");
+			boolean quantity = IntegerValidation.isIntValid(medicine.getQuantity(), "Invalid Quantity");
+			if (medicineName && price && expiryDate && usedIn && quantity) {
 				isValid = true;
 			}
 		} catch (Exception e) {

@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="css/style.css" type="text/css" >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
+
 
 <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");

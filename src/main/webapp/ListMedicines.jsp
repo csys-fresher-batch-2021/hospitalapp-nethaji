@@ -10,26 +10,30 @@
 <title>HospitalApp - Medicine</title>
 </head>
 <body>
-	<% 
-String loggedInAsAdmin = (String)session.getAttribute("LOGGED_IN_ADMIN");
-String loggedInAsUser = (String)session.getAttribute("LOGGED_IN_USER");
-System.out.println("loggedInUser" +loggedInAsUser);
-System.out.println("loggedInAdmin" +loggedInAsAdmin);
-String role = (String)session.getAttribute("ROLE");
-if(loggedInAsAdmin == null && loggedInAsUser == null){
-	response.sendRedirect("Index.jsp");
-} else {
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-	response.setDateHeader("Expires", 0);
-}
-%>
+	<%
+	String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+	String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+	System.out.println("loggedInUser" + loggedInAsUser);
+	System.out.println("loggedInAdmin" + loggedInAsAdmin);
+	String role = (String) session.getAttribute("ROLE");
+	if (loggedInAsAdmin == null && loggedInAsUser == null) {
+		response.sendRedirect("Index.jsp");
+	} else {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0);
+	}
+	%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Medicine</h3>
-		<%if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+		<%
+		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+		%>
 		<a href="AddMedicine.jsp">Add Medicine</a><br />
-		<% } %>
+		<%
+		}
+		%>
 		<table class="table table-bordered">
 			<caption>List of Available Medicine</caption>
 			<thead>
@@ -38,12 +42,15 @@ if(loggedInAsAdmin == null && loggedInAsUser == null){
 					<th scope="col">Medicine name</th>
 					<th scope="col">Price</th>
 					<th scope="col">Expiry Date</th>
+					<th scope="col">Days Remaining</th>
 					<th scope="col">Quantity</th>
 					<%
-		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
-		%>
+					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+					%>
 					<th scope="col">Delete</th>
-					<% } %>
+					<%
+					}
+					%>
 				</tr>
 			</thead>
 			<tbody>
@@ -59,12 +66,17 @@ if(loggedInAsAdmin == null && loggedInAsUser == null){
 					<td><%=medicine.getMedicineName()%></td>
 					<td><%=medicine.getPrice()%></td>
 					<td><%=medicine.getExpiryDate()%></td>
+					<td><%=medicine.getUsedIn() %></td>
 					<td><%=medicine.getQuantity()%></td>
-					<%if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+					<%
+					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+					%>
 					<td><a
 						href="DeleteMedicineServlet?medicineName=<%=medicine.getMedicineName()%>"
 						class="btn btn-danger">Delete</a></td>
-					<% } %>
+					<%
+					}
+					%>
 				</tr>
 				<%
 				}
@@ -75,6 +87,7 @@ if(loggedInAsAdmin == null && loggedInAsUser == null){
 		<br />
 
 	</main>
+
 
 </body>
 </html>
