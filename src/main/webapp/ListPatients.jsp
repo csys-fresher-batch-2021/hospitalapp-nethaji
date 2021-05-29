@@ -11,12 +11,21 @@
 </head>
 <body>
 <% 
-String loggedInUsername = (String)session.getAttribute("LOGGED_IN_ADMIN");
-String role = (String)session.getAttribute("ROLE"); %>
+String loggedInAsAdmin = (String)session.getAttribute("LOGGED_IN_ADMIN");
+String loggedInAsUser = (String)session.getAttribute("LOGGED_IN_USER");
+String role = (String)session.getAttribute("ROLE");
+if(loggedInAsAdmin == null && loggedInAsUser == null){
+	response.sendRedirect("Index.jsp");
+} else {
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setDateHeader("Expires", 0);
+}
+%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Patient</h3>
-		<% if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+		<% if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 
 		<a href="AddPatient.jsp">Add Patient</a><br />
 		<% } %>
@@ -30,7 +39,9 @@ String role = (String)session.getAttribute("ROLE"); %>
 					<th scope="col">Age</th>
 					<th scope="col">Gender</th>
 					<th scope="col">reason</th>
+					<%if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 					<th scope="col">Delete</th>
+					<%} %>
 				</tr>
 			</thead>
 			<tbody id="patient-tbl">
@@ -58,7 +69,8 @@ function getAllPatient(){
 			"<td>"+patient.patientAge+ 	"</td>" + 
 			"<td>"+patient.patientGender+"</td>" +
 			"<td>"+patient.reason+"</td>"+
-			"<td><a href='DeletePatientServlet?patientName=" + patient.patientName +"' class='btn btn-danger'>Delete</a></td>"+
+			<%if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+			"<td><a href='DeletePatientServlet?patientName=" + patient.patientName +"' class='btn btn-danger'>Delete</a></td>"+  <% } %>
 			"</tr>";
 		}
 		console.log(content);

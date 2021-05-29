@@ -15,12 +15,16 @@ body {
 </style>
 </head>
 <body>
+<% 
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
+
+%>
 	<jsp:include page="LoginHeader.jsp"></jsp:include>
 	<main class="container-fluid">
-		<form>
+		<form action="UserLoginServlet" method="post">
 			<h1>Login</h1>
-			<br> <label for="user"> Username: </label> <input type="text"
-				id="user" name="user" placeholder="Enter the user name" required
+			<br> <label for="username"> Username: </label> <input type="text"
+				id="username" name="username" placeholder="Enter the user name" required
 				autofocus> <br> <br> <label for="password">
 				Password: </label> <input type="password" id="password" name="password"
 				required autofocus> <br> <br>
@@ -29,6 +33,5 @@ body {
 			</div>
 		</form>
 	</main>
-
 </body>
 </html>

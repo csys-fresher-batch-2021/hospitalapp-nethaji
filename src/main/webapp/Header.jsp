@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="css/style.css" type="text/css" >
 
 <%
-String loggedInUsername = (String) session.getAttribute("LOGGED_IN_ADMIN");
+String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 String role = (String) session.getAttribute("ROLE");
 %>
 
@@ -27,28 +28,34 @@ String role = (String) session.getAttribute("ROLE");
 					href="ListPatients.jsp">Patients</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="ListMedicines.jsp">Medicine</a></li>
-
 			</ul>
 
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 				<%
-				if (loggedInUsername == null && role == null && role.equalsIgnoreCase("ADMIN")) {
+				if (loggedInAsAdmin == null && loggedInAsUser == null && role == null && "ADMIN".equalsIgnoreCase(role)) {
 				%>
+				
 				<li class="nav-item active"><a class="nav-link"
 					href="Index.jsp">Login</a></li>
 				<li class="nav-item"><a class="nav-link" href="Register.jsp">Register</a>
 				</li>
 				<%
-				} else {
+				} else if(loggedInAsUser == null && loggedInAsAdmin != null) {
 				%>
-				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInUsername%></a>
+				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAsAdmin%></a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
 				</li>
 
 				<%
-				}
+				}else{
 				%>
+				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAsUser%></a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
+				</li>
+				
+				<%} %>
 			</ul>
 
 		</div>
