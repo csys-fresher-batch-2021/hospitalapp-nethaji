@@ -23,8 +23,8 @@
 	}
 	%>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<main class="container-fluid">
-		<h3>List of Doctors</h3>
+	<main class="main">
+		<h1>List of Doctors</h1	>
 		<%
 		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 		%>

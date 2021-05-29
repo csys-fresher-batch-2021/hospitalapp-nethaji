@@ -10,9 +10,10 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<main class="container-fluid">
-		<h3>Add Patient Record</h3>
+	<main class="main">
+		
 		<form action="AddPatientServlet">
+		<h1>Add Patient Record</h1>
 			<label for="patientName">Patient Name:</label> <input type="text"
 				name="patientName" pattern="[A-Za-z\s]{3,20}"
 				placeholder="Enter Patient name" required autofocus /> <br /> <br />

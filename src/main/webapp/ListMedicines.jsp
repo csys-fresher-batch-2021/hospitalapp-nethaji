@@ -13,8 +13,6 @@
 	<%
 	String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 	String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-	System.out.println("loggedInUser" + loggedInAsUser);
-	System.out.println("loggedInAdmin" + loggedInAsAdmin);
 	String role = (String) session.getAttribute("ROLE");
 	if (loggedInAsAdmin == null && loggedInAsUser == null) {
 		response.sendRedirect("Index.jsp");
@@ -25,8 +23,8 @@
 	}
 	%>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<main class="container-fluid">
-		<h3>List of Medicine</h3>
+	<main class="main">
+		<h1>List of Medicine</h1>
 		<%
 		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 		%>
@@ -59,7 +57,7 @@
 				List<Medicine> medicineInfo = medicineService.getMedicineList();
 				int i = 10;
 				for (Medicine medicine : medicineInfo) {
-					i++;
+					i++;	
 				%>
 				<tr>
 					<td><%=i%></td>

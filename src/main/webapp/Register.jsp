@@ -7,10 +7,11 @@
 <title>New User</title>
 </head>
 <body>
-	<jsp:include page="Header.jsp"></jsp:include>
+	<jsp:include page="LoginHeader.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h3>New user Registration</h3>
+		
 		<form action="AddUserServlet" method="get">
+		<h1>New user Registration</h1> <br /> 
 			<label for="username">user Name:</label> <input type="text"
 				name="username" pattern="[A-Za-z\s]{3,20}"
 				placeholder="Enter User name" required autofocus /> <br /> <br />

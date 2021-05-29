@@ -9,7 +9,7 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<main class="container-fluid">
+	<main class="main">
 
 		<form action="AddMedicineServlet">
 			<h1>Add Medicine Record</h1>

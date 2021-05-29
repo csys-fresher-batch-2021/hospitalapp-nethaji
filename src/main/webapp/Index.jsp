@@ -20,7 +20,7 @@ String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
 
 %>
 	<jsp:include page="LoginHeader.jsp"></jsp:include>
-	<main class="container-fluid">
+	<main class="main">
 		<form action="UserLoginServlet" method="post">
 			<h1>Login</h1>
 			<br> <label for="username"> Username: </label> <input type="text"
