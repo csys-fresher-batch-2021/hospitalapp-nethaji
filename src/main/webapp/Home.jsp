@@ -5,7 +5,7 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<main class="container-fluid">
+	<main class="main">
 		<h3>Hospital Management System</h3>
 	</main>
 </body>

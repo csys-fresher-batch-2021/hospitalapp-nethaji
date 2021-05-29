@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="css/loginheaderstyle.css" />
+
 
 <header>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">

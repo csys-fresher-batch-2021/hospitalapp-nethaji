@@ -39,11 +39,13 @@ public class MedicineDao {
 				String medicineName = rs.getString("medicineName");
 				double price = rs.getDouble("price");
 				LocalDate expiryDate = (rs.getDate("expiryDate")).toLocalDate();
+				int usedIn = rs.getInt("usedIn");
 				int quantity = rs.getInt("quantity");
 				Medicine medicine = new Medicine();
 				medicine.setMedicineName(medicineName);
 				medicine.setPrice(price);
 				medicine.setExpiryDate(expiryDate);
+				medicine.setUsedIn(usedIn);
 				medicine.setQuantity(quantity);
 				medicineList.add(medicine);
 			}
@@ -64,7 +66,7 @@ public class MedicineDao {
 	 */
 
 	public void save(Medicine medicine){
-		String sql = "insert into medicine(medicineName,price,expiryDate,quantity) values ( ?,?,?,? )";
+		String sql = "insert into medicine(medicineName,price,expiryDate,usedIn,quantity) values ( ?,?,?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
 
@@ -72,7 +74,8 @@ public class MedicineDao {
 			pst.setString(1, medicine.getMedicineName());
 			pst.setDouble(2, medicine.getPrice());
 			pst.setDate(3, Date.valueOf(medicine.getExpiryDate()));
-			pst.setInt(4, medicine.getQuantity());
+			pst.setInt(4, medicine.getUsedIn());
+			pst.setInt(5, medicine.getQuantity());
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			throw new DBException("Medicine can't be added");

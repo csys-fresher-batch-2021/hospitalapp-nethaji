@@ -9,11 +9,15 @@ public class Medicine {
 	private double price;
 	private LocalDate expiryDate;
 	private int quantity;
-	
+	private int usedIn;
 
-	public Medicine() {
-		// Default Constructor 
-		}
+	public int getUsedIn() {
+		return usedIn;
+	}
+
+	public void setUsedIn(int usedIn) {
+		this.usedIn = usedIn;
+	}
 
 	public int getMedicineId() {
 		return medicineId;
@@ -53,12 +57,6 @@ public class Medicine {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-	@Override
-	public String toString() {
-		return "Medicine [medicineId=" + medicineId + ", medicineName=" + medicineName + ", price=" + price
-				+ ", expiryDate=" + expiryDate + ", quantity=" + quantity + "]";
 	}
 
 }

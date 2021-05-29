@@ -23,8 +23,8 @@ if(loggedInAsAdmin == null && loggedInAsUser == null){
 }
 %>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<main class="container-fluid">
-		<h3>List of Patient</h3>
+	<main class="main">
+		<h1>List of Patient</h1>
 		<% if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 
 		<a href="AddPatient.jsp">Add Patient</a><br />

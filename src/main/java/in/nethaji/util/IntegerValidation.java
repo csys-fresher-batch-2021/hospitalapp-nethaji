@@ -2,9 +2,9 @@ package in.nethaji.util;
 
 import in.nethaji.exception.UtilException;
 
-public class IntegerValiadation {
+public class IntegerValidation {
 
-	private IntegerValiadation() {
+	private IntegerValidation() {
 		// Default Constructor
 	}
 	
