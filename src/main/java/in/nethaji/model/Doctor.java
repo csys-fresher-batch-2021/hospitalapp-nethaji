@@ -2,7 +2,6 @@ package in.nethaji.model;
 
 public class Doctor {
 
-
 	private String doctorName;
 
 	private String specialist;
@@ -20,7 +19,7 @@ public class Doctor {
 	public String getSpecialist() {
 		return specialist;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Doctor [doctorName=" + doctorName + ", specialist=" + specialist + "]";

@@ -22,3 +22,7 @@ insert into medicine values ('Paracetomal',10.00,'2021-10-10',20);
 insert into medicine values ('Eye Drops',40.00,'2022-11-10',40);
 insert into medicine values ('Benadryl',70.00,'2023-01-13',35);
 select * from medicine;
+
+-- User Table --
+create table usertable (username varchar(50) primary key,bDate Date not null,age int not null, phoneNumber bigint, email varchar(50),pass varchar(40),gender varchar(50))
+insert into usertable values ('Nethaji','14-10-1999',21,9751713840,'nethaji1410@gmail.com','pass1234','male');

@@ -10,13 +10,24 @@
 <title>HospitalApp - Medicine</title>
 </head>
 <body>
-<% 
-String loggedInUsername = (String)session.getAttribute("LOGGED_IN_ADMIN");
-String role = (String)session.getAttribute("ROLE"); %>
+	<% 
+String loggedInAsAdmin = (String)session.getAttribute("LOGGED_IN_ADMIN");
+String loggedInAsUser = (String)session.getAttribute("LOGGED_IN_USER");
+System.out.println("loggedInUser" +loggedInAsUser);
+System.out.println("loggedInAdmin" +loggedInAsAdmin);
+String role = (String)session.getAttribute("ROLE");
+if(loggedInAsAdmin == null && loggedInAsUser == null){
+	response.sendRedirect("Index.jsp");
+} else {
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setDateHeader("Expires", 0);
+}
+%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>List of Medicine</h3>
-		<%if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+		<%if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 		<a href="AddMedicine.jsp">Add Medicine</a><br />
 		<% } %>
 		<table class="table table-bordered">
@@ -28,7 +39,11 @@ String role = (String)session.getAttribute("ROLE"); %>
 					<th scope="col">Price</th>
 					<th scope="col">Expiry Date</th>
 					<th scope="col">Quantity</th>
+					<%
+		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+		%>
 					<th scope="col">Delete</th>
+					<% } %>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,7 +60,7 @@ String role = (String)session.getAttribute("ROLE"); %>
 					<td><%=medicine.getPrice()%></td>
 					<td><%=medicine.getExpiryDate()%></td>
 					<td><%=medicine.getQuantity()%></td>
-					<%if(loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+					<%if(loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 					<td><a
 						href="DeleteMedicineServlet?medicineName=<%=medicine.getMedicineName()%>"
 						class="btn btn-danger">Delete</a></td>
