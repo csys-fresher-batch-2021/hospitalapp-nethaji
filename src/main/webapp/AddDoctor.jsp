@@ -14,9 +14,9 @@
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="main">
 		<form action="AddDoctorServlet">
-			<h1>Add Doctor Record</h1><br />
-			<label for="doctorName">Doctor Name</label> <input type="text"
-				name="doctorName" pattern="[A-Za-z\s]{3,20}"
+			<h1>Add Doctor Record</h1>
+			<br /> <label for="doctorName">Doctor Name</label> <input
+				type="text" name="doctorName" pattern="[A-Za-z\s]{3,20}"
 				placeholder="Enter Doctor name" required autofocus /> <br /> <br />
 			<label for="specialist"> Specialist </label> <select
 				name="specialist" required>
@@ -31,7 +31,10 @@
 				}
 				%>
 			</select><br />
-			<button type="submit">Submit</button>
+			<div style="text-align: center">
+				<jsp:include page="Message.jsp"></jsp:include><br />
+				<button>Submit</button>
+			</div>
 
 		</form>
 	</main>

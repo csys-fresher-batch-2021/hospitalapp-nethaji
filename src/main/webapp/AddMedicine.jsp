@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Medicine - Add Medicine</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>

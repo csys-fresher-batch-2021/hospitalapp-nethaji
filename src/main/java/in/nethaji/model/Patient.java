@@ -2,11 +2,16 @@ package in.nethaji.model;
 
 public class Patient {
 
-	private int patientId;
 	private String patientName;
 	private int patientAge;
 	private String patientGender;
 	private String reason;
+
+	@Override
+	public String toString() {
+		return "Patient [patientName=" + patientName + ", patientAge=" + patientAge + ", patientGender=" + patientGender
+				+ ", reason=" + reason + "]";
+	}
 
 	public Patient(String patientName, int patientAge, String patientGender, String reason) {
 		super();
@@ -14,14 +19,6 @@ public class Patient {
 		this.patientAge = patientAge;
 		this.patientGender = patientGender;
 		this.reason = reason;
-	}
-
-	public int getPatientId() {
-		return patientId;
-	}
-
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
 	}
 
 	public String getPatientName() {

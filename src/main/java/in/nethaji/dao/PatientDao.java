@@ -17,6 +17,8 @@ public class PatientDao {
 	PreparedStatement pst = null;
 	ResultSet rs = null;
 
+	List<Patient> searchList = new ArrayList<>();
+
 	/**
 	 * This method is used to get all the patient details from the database
 	 * 
@@ -25,7 +27,7 @@ public class PatientDao {
 	 * @throws SQLException
 	 */
 
-	public List<Patient> findAllPatient(){
+	public List<Patient> findAllPatient() {
 		List<Patient> patientList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -58,15 +60,15 @@ public class PatientDao {
 	 */
 
 	public void save(Patient patient) {
-		String sql = "insert into patient(patientName,patientAge,patientGender,reason) values ( ?,?,?,? )";
+		String sql = "insert into patient(patientName,patientAge,patientGender,reason) values (?,?,?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
 
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, patient.getPatientName());
-			pst.setInt(2, patient.getPatientAge());
-			pst.setString(3, patient.getPatientGender());
-			pst.setString(4, patient.getReason());
+			pst.setString(2, patient.getPatientName());
+			pst.setInt(3, patient.getPatientAge());
+			pst.setString(4, patient.getPatientGender());
+			pst.setString(5, patient.getReason());
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			throw new DBException("Patient can't be added");
@@ -74,14 +76,15 @@ public class PatientDao {
 			ConnectionUtil.close(connection, pst, rs);
 		}
 	}
-	
+
 	/**
 	 * This method is used to delete patient in array list
+	 * 
 	 * @param product
-	 * @throws ClassNotFoundException 
+	 * @throws ClassNotFoundException
 	 */
-	
-	public void delete(String patientName){
+
+	public void delete(String patientName) {
 		String sql = "DELETE FROM patient where patientName = ?;";
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -91,9 +94,32 @@ public class PatientDao {
 		} catch (SQLException e) {
 			throw new DBException("Patient can't be deleted");
 		} finally {
-			ConnectionUtil.close(connection,pst, rs);
+			ConnectionUtil.close(connection, pst, rs);
 		}
 	}
 
-	
+	public Patient search(String searchName) {
+		Patient patient = null;
+		String sql = "select * from patient where patientName = ?";
+		try {
+			connection = ConnectionUtil.getConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, searchName);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				String patientName = rs.getString("patientName");
+				int patientAge = rs.getInt("patientAge");
+				String patientGender = rs.getString("patientGender");
+				String reason = rs.getString("reason");
+				patient = new Patient(patientName, patientAge, patientGender, reason);
+			}
+		} catch (SQLException e) {
+			throw new DBException("No Details Found");
+		} finally {
+			ConnectionUtil.close(connection, pst, rs);
+		}
+
+		return patient;
+	}
+
 }

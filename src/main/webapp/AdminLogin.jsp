@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Login</title>
@@ -25,6 +25,7 @@ body {
 				Password: </label> <input type="password" id="password" name="password"
 				required autofocus> <br> <br>
 			<div style="text-align: center">
+				<jsp:include page="Message.jsp"></jsp:include><br />
 				<button>Submit</button>
 			</div>
 		</form>

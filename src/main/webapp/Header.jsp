@@ -59,14 +59,14 @@ String role = (String) session.getAttribute("ROLE");
 	</nav>
 	<div class="sidebar">
 		<a class="navbar-brand" href="Home.jsp">Hospital App</a><br /> <br />
-		<a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+		<a href="Home.jsp"><i class="fa fa-fw fa-home"></i> Home</a>
 		<button class="dropdown-btn">
 			<i class="fa fa-user-md"></i> &nbsp; Doctor <i
 				class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-container">
 			<a href="ListDoctors.jsp">List Doctors</a> <a href="AddDoctor.jsp">Add
-				Doctors</a> <a href="#">Search Doctors</a>
+				Doctors</a> 
 		</div>
 		<button class="dropdown-btn">
 			<i class="fa fa-fw fa-user"></i>&nbsp;Patient <i
@@ -74,8 +74,7 @@ String role = (String) session.getAttribute("ROLE");
 		</button>
 		<div class="dropdown-container">
 			<a href="ListPatients.jsp">List Patients </a> <a
-				href="AddPatient.jsp">Add Patient</a> <a href="#">Search
-				Patients</a>
+				href="AddPatient.jsp">Add Patient</a> 
 		</div>
 		<button class="dropdown-btn">
 			<i class="fa fa-pills"></i></i></i>&nbsp;Medicine<i class="fa fa-caret-down"></i>

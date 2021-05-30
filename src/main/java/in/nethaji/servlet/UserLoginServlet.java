@@ -21,11 +21,11 @@ public class UserLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserRegister userRegister = new UserRegister();
@@ -37,6 +37,8 @@ public class UserLoginServlet extends HttpServlet {
 			response.sendRedirect("Home.jsp");
 		} else {
 			response.sendRedirect("Index.jsp?errorMessage=Invalid Login Credentials");
+
+
 		}
 	}
 

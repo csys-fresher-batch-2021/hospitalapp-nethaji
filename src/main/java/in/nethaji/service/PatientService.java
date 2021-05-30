@@ -19,9 +19,10 @@ public class PatientService {
 	public List<Patient> getPatients() {
 		return patientDao.findAllPatient();
 	}
-	
+
 	/**
 	 * This method is used to add patient in array list
+	 * 
 	 * @param patient
 	 * @return
 	 */
@@ -37,6 +38,7 @@ public class PatientService {
 
 	/**
 	 * This method is used to delete patient in db
+	 * 
 	 * @param patientName
 	 * @return
 	 */
@@ -44,8 +46,13 @@ public class PatientService {
 		boolean isDeleted = false;
 		if (StringValidation.isValidString(patientName, "Invalid Patient Name")) {
 			patientDao.delete(patientName);
+			isDeleted = true;
 		}
 		return isDeleted;
+	}
+
+	public Patient searchPatient(String searchName) {
+		return patientDao.search(searchName);
 	}
 
 }
