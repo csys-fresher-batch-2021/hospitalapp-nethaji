@@ -50,7 +50,6 @@
 				<jsp:include page="Message.jsp"></jsp:include><br />
 				<button>Submit</button>
 			</div>
-
 		</form>
 	</main>
 </body>
