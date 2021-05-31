@@ -11,7 +11,7 @@ public class TestDoctorValidation {
 	@Test
 	public void testDoctorValidation1() {
 		try {
-			Doctor doctor = new Doctor("Venkataraman", "ENT");
+			Doctor doctor = new Doctor("D1","Venkataraman", "ENT");
 			Boolean isValid = DoctorValidation.isValidDoctor(doctor);
 			assertTrue(isValid);
 		} catch (Exception e) {
@@ -25,10 +25,10 @@ public class TestDoctorValidation {
 	@Test
 	public void testDoctorValidation2() {
 		try {
-			Doctor doctor = new Doctor(null, "Cardiology");
+			Doctor doctor = new Doctor(null,"Kiran Kumar", "Cardiology");
 			DoctorValidation.isValidDoctor(doctor);
 		} catch (Exception e) {
-			assertEquals("Invalid Doctor Name", e.getMessage());
+			assertEquals("Invalid Doctor Id", e.getMessage());
 		}
 	}
 
@@ -39,7 +39,7 @@ public class TestDoctorValidation {
 	@Test
 	public void testDoctorValidation3() {
 		try {
-			Doctor doctor = new Doctor("Rahul", null);
+			Doctor doctor = new Doctor("D8","Rahul", null);
 			DoctorValidation.isValidDoctor(doctor);
 		} catch (Exception e) {
 			assertEquals("Invalid specialist", e.getMessage());
@@ -49,7 +49,7 @@ public class TestDoctorValidation {
 	@Test
 	public void testDoctorValidation4() {
 		try {
-			Doctor doctor = new Doctor("Venkataraman", "General");
+			Doctor doctor = new Doctor("D2","Venkataraman", "General");
 			Boolean isValid = DoctorValidation.isValidDoctor(doctor);
 			assertTrue(isValid);
 		} catch (Exception e) {
@@ -64,7 +64,7 @@ public class TestDoctorValidation {
 	@Test
 	public void testDoctorValidation5() {
 		try {
-			Doctor doctor = new Doctor("  ", "ENT");
+			Doctor doctor = new Doctor("D7","  ", "ENT");
 			DoctorValidation.isValidDoctor(doctor);
 		} catch (Exception e) {
 			assertEquals("Invalid Doctor Name", e.getMessage());
