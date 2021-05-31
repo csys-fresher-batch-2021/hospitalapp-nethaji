@@ -28,7 +28,7 @@
 		<%
 		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 		%>
-		<a href="AddMedicine.jsp">Add Medicine</a><br />
+		<a href="AddMedicine.jsp" class="btn btn-primary">Add Medicine</a><br />
 		<%
 		}
 		%>
@@ -57,14 +57,14 @@
 				List<Medicine> medicineInfo = medicineService.getMedicineList();
 				int i = 10;
 				for (Medicine medicine : medicineInfo) {
-					i++;	
+					i++;
 				%>
 				<tr>
 					<td><%=i%></td>
 					<td><%=medicine.getMedicineName()%></td>
 					<td><%=medicine.getPrice()%></td>
 					<td><%=medicine.getExpiryDate()%></td>
-					<td><%=medicine.getUsedIn() %></td>
+					<td><%=medicine.getUsedIn()%></td>
 					<td><%=medicine.getQuantity()%></td>
 					<%
 					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {

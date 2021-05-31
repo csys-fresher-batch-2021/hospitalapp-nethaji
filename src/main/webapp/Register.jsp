@@ -37,7 +37,8 @@
 				type="radio" name="gender" value="female"> Female <input
 				type="radio" name="gender" value="other"> Other<br /> <br />
 			<div style="text-align: center">
-				<button type="submit">Register</button>
+				<jsp:include page="Message.jsp"></jsp:include><br />
+				<button type="Submit">Sign Up</button>
 			</div>
 		</form>
 	</main>

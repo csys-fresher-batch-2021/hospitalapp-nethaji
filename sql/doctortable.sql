@@ -1,10 +1,10 @@
 -- Doctor Table --
 
-create table doctor(doctorName varchar(50) primary key,specialist varchar(50) not null);
-insert into doctor values ('Vibin kumar','ENT');
-insert into doctor values ('Nethaji Pandiarajan','general');
+create table doctor(doctorId varchar(20) primary Key, doctorName varchar(50) not null,specialist varchar(50) not null);
+insert into doctor values ('D1','Vibin kumar','ENT');
+insert into doctor values ('D2','Nethaji Pandiarajan','general');
 Select * from doctor;
-insert into doctor values ('ponram', 'ENT');
+insert into doctor values ('D3','ponram', 'ENT');
 select * from doctor;
 DELETE FROM doctor where doctorName = 'Nethaji Pandiarajan';
 

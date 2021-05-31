@@ -21,17 +21,17 @@ body {
 	<jsp:include page="LoginHeader.jsp"></jsp:include>
 	<main class="main">
 		<form action="UserLoginServlet" method="post">
-			<h1>Login</h1>
+			<h1>User Login</h1>
 			<br> <label for="username"> Username: </label> <input
 				type="text" id="username" name="username"
 				placeholder="Enter the user name" required autofocus> <br>
 			<br> <label for="password"> Password: </label> <input
 				type="password" id="password" name="password" required autofocus>
 			<br> <br>
-			
+
 			<div style="text-align: center">
-			<jsp:include page="Message.jsp"></jsp:include><br/>
-				<button>Submit</button>
+				<jsp:include page="Message.jsp"></jsp:include><br />
+				<button type="Submit">Submit</button>
 			</div>
 		</form>
 	</main>

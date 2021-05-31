@@ -3,7 +3,10 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 
 <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
@@ -66,7 +69,7 @@ String role = (String) session.getAttribute("ROLE");
 		</button>
 		<div class="dropdown-container">
 			<a href="ListDoctors.jsp">List Doctors</a> <a href="AddDoctor.jsp">Add
-				Doctors</a> 
+				Doctors</a>
 		</div>
 		<button class="dropdown-btn">
 			<i class="fa fa-fw fa-user"></i>&nbsp;Patient <i
@@ -74,7 +77,7 @@ String role = (String) session.getAttribute("ROLE");
 		</button>
 		<div class="dropdown-container">
 			<a href="ListPatients.jsp">List Patients </a> <a
-				href="AddPatient.jsp">Add Patient</a> 
+				href="AddPatient.jsp">Add Patient</a>
 		</div>
 		<button class="dropdown-btn">
 			<i class="fa fa-pills"></i></i></i>&nbsp;Medicine<i class="fa fa-caret-down"></i>

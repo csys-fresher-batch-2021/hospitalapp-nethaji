@@ -11,14 +11,29 @@
 <title>HospitalApp - Add Doctor</title>
 </head>
 <body>
+	<%
+	String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+	String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+	String role = (String) session.getAttribute("ROLE");
+	if (loggedInAsAdmin == null && loggedInAsUser == null) {
+		response.sendRedirect("Index.jsp");
+	} else {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0);
+	}
+	%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="main">
 		<form action="AddDoctorServlet">
 			<h1>Add Doctor Record</h1>
-			<br /> <label for="doctorName">Doctor Name</label> <input
-				type="text" name="doctorName" pattern="[A-Za-z\s]{3,20}"
+			<br /> <label for="doctorName">Doctor Id:</label> <input type="text"
+				name="doctorId" pattern="[A-Za-z0-9\s]{1,5}"
+				placeholder="@Example : D1" required autofocus /> <br /> <br /> <label
+				for="doctorName">Doctor Name :</label> <input type="text"
+				name="doctorName" pattern="[A-Za-z\s]{3,20}"
 				placeholder="Enter Doctor name" required autofocus /> <br /> <br />
-			<label for="specialist"> Specialist </label> <select
+			<label for="specialist"> Specialist :</label> <select
 				name="specialist" required>
 				<option selected disabled value="">--Select Specialist--</option>
 				<%

@@ -42,15 +42,23 @@ public class DoctorService {
 	 * @return
 	 */
 
-	public boolean deleteDoctor(String doctorName) {
+	public boolean deleteDoctor(String doctorId) {
 
 		boolean isDeleted = false;
-		if (StringValidation.isValidString(doctorName, "Invalid Doctor Name")) {
-			doctorDao.delete(doctorName);
+		if (StringValidation.isValidString(doctorId, "Invalid Doctor Id")) {
+			doctorDao.delete(doctorId);
 			isDeleted = true;
 		}
 
 		return isDeleted;
+	}
+
+	public boolean updateDoctor(Doctor doctor) {
+		boolean isUpdated = false;
+		if (DoctorValidation.isValidDoctor(doctor)) {
+			doctorDao.update(doctor);
+		}
+		return isUpdated;
 	}
 
 }

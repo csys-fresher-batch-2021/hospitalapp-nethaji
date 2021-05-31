@@ -91,7 +91,7 @@ public class MedicineDao {
 	 */
 	
 	public void delete(String medicineName){
-		String sql = "DELETE FROM medicine where medicineName = ?;";
+		String sql = "DELETE FROM medicine where medicineName = ?";
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);

@@ -26,7 +26,7 @@ body {
 				required autofocus> <br> <br>
 			<div style="text-align: center">
 				<jsp:include page="Message.jsp"></jsp:include><br />
-				<button>Submit</button>
+				<button type="submit">Submit</button>
 			</div>
 		</form>
 	</main>

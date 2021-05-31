@@ -11,10 +11,10 @@
 </head>
 <body>
 	<%
-	String loggedInAsAdmin = (String)session.getAttribute("LOGGED_IN_ADMIN");
-	String loggedInAsUser = (String)session.getAttribute("LOGGED_IN_USER");
-	String role = (String)session.getAttribute("ROLE");
-	if(loggedInAsAdmin == null && loggedInAsUser == null){
+	String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+	String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+	String role = (String) session.getAttribute("ROLE");
+	if (loggedInAsAdmin == null && loggedInAsUser == null) {
 		response.sendRedirect("Index.jsp");
 	} else {
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -24,11 +24,12 @@
 	%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="main">
-		<h1>List of Doctors</h1	>
+		<h1>List of Doctors</h1>
 		<%
 		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 		%>
-		<a href="AddDoctor.jsp">Add Doctor</a><br />
+		<a href="AddDoctor.jsp" class="btn btn-primary">Add Doctor</a><br />
+		<br />
 		<%
 		}
 		%>
@@ -37,13 +38,17 @@
 			<thead>
 				<tr>
 					<th scope="col">S.no</th>
+					<th scope="col">Doctor Id</th>
 					<th scope="col">Doctor name</th>
 					<th scope="col">Specialist</th>
 					<%
 					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
-						%>
+					%>
+					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
-					<% } %>
+					<%
+					}
+					%>
 				</tr>
 			</thead>
 			<tbody>
@@ -56,13 +61,17 @@
 				%>
 				<tr>
 					<td><%=i%></td>
+					<td><%=doctor.getDoctorId()%></td>
 					<td>Dr.<%=doctor.getDoctorName()%></td>
 					<td><%=doctor.getSpecialist()%></td>
 					<%
 					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 					%>
 					<td><a
-						href="DeleteDoctorServlet?doctorName=<%=doctor.getDoctorName()%>"
+						href="EditDoctorServlet?doctorId=<%=doctor.getDoctorId()%>"
+						class="btn btn-primary">Edit</a></td>
+					<td><a
+						href="DeleteDoctorServlet?doctorId=<%=doctor.getDoctorId()%>"
 						class="btn btn-danger">Delete</a></td>
 					<%
 					}

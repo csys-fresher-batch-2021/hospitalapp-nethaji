@@ -20,10 +20,11 @@ public class AddDoctorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String doctorId =request.getParameter("doctorId");
 		String doctorName = request.getParameter("doctorName");
 		String specialist = request.getParameter("specialist");
 		try {
-			Doctor doctor = new Doctor(doctorName, specialist);
+			Doctor doctor = new Doctor(doctorId,doctorName, specialist);
 			DoctorService doctorService = new DoctorService();
 			doctorService.addDoctor(doctor);
 			response.sendRedirect("ListDoctors.jsp");
