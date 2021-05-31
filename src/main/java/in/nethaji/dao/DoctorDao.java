@@ -16,6 +16,7 @@ public class DoctorDao {
 	Connection connection = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
+	List<Doctor> doctorList = new ArrayList<>();
 
 	/**
 	 * This method is used to get all the doctor from database
@@ -23,8 +24,7 @@ public class DoctorDao {
 	 * @return doctor ArrayList
 	 * @throws ClassNotFoundException
 	 */
-	public List<Doctor> findAllDoctor(){
-		List<Doctor> doctorList = new ArrayList<>();
+	public List<Doctor> findAllDoctor() {
 		try {
 			// Step 1: Get the connection
 			connection = ConnectionUtil.getConnection();
@@ -34,17 +34,18 @@ public class DoctorDao {
 			// Step 3: execute query
 			rs = pst.executeQuery();
 			while (rs.next()) {
+				String doctorId = rs.getString("doctorId");
 				String doctorName = rs.getString("doctorName");
 				String specialist = rs.getString("specialist");
 				// Store the data in model
-				Doctor doctor = new Doctor(doctorName, specialist);
+				Doctor doctor = new Doctor(doctorId,doctorName, specialist);
 				// Store all doctor in list
 				doctorList.add(doctor);
 			}
-		} catch (SQLException e ) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionUtil.close(connection,pst,rs);
+			ConnectionUtil.close(connection, pst, rs);
 		}
 		return doctorList;
 	}
@@ -57,14 +58,15 @@ public class DoctorDao {
 	 * @throws SQLException
 	 */
 
-	public void save(Doctor doctor){
-		String sql = "insert into doctor(doctorName,specialist) values ( ?,? )";
+	public void save(Doctor doctor) {
+		String sql = "insert into doctor(doctorId,doctorName,specialist) values ( ?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
 
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, doctor.getDoctorName());
-			pst.setString(2, doctor.getSpecialist());
+			pst.setString(1, doctor.getDoctorId());
+			pst.setString(2, doctor.getDoctorName());
+			pst.setString(3, doctor.getSpecialist());
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			throw new DBException("Doctor can't be added");
@@ -72,27 +74,66 @@ public class DoctorDao {
 			ConnectionUtil.close(connection, pst, rs);
 		}
 	}
-	
+
 	/**
 	 * This method is used to delete doctor in array list
+	 * 
 	 * @param product
-	 * @throws ClassNotFoundException 
+	 * @throws ClassNotFoundException
 	 */
-	
-	public void delete(String doctorName){
-		String sql = "DELETE FROM doctor where doctorName = ?;";
+
+	public void delete(String doctorId) {
+		String sql = "DELETE FROM doctor where doctorId = ?";
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, doctorName);
+			pst.setString(1, doctorId);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			throw new DBException("Doctor can't be deleted");
 		} finally {
-			ConnectionUtil.close(connection,pst, rs);
+			ConnectionUtil.close(connection, pst, rs);
 		}
 	}
 
+	public void update(Doctor doctor) {
+		String sql = "update doctor set doctorName = ?,specialist =? where doctorId = ?";
+		try {
+			connection = ConnectionUtil.getConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, doctor.getDoctorName());
+			pst.setString(2, doctor.getSpecialist());
+			pst.setString(3, doctor.getDoctorId());
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			throw new DBException("Doctor data can't be updated");
+		} finally {
+			ConnectionUtil.close(connection, pst,rs);
+		}
+	}
 
+	public Doctor getRecordById(String doctorId) {
+		Doctor doctor = null;
+		String sql = "select * from doctor where doctorId = ?";
+		try {
+			connection = ConnectionUtil.getConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, doctorId);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				String id = rs.getString("doctorId");
+				String doctorName = rs.getString("doctorName");
+				String specialist = rs.getString("specialist");
+				// Store the data in model
+				doctor = new Doctor(id,doctorName, specialist);
+
+			}
+		} catch (SQLException e) {
+			throw new DBException("Doctor data can't be find");
+		} finally {
+			ConnectionUtil.close(connection, pst, rs);
+		}
+		return doctor;
+	}
 
 }

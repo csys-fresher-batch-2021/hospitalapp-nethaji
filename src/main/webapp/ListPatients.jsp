@@ -42,7 +42,8 @@ form {
 			<div class="col-md-6 text-right ">
 				<div class="row">
 					<div class="col-md-3">
-						<label for="search"><h3>Search:</h3></label>
+						<label for="search"><h3
+								style="padding-left: 45px; padding-top: 6px;">Search:</h3></label>
 					</div>
 					<div class="col-md-3">
 						<form action="SearchPatientServlet" method="get">

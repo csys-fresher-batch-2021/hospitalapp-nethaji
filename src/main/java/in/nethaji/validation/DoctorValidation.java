@@ -12,10 +12,11 @@ public class DoctorValidation {
 	public static boolean isValidDoctor(Doctor doctor) {
 		boolean isValid = false;
 		try {
+			boolean doctorId = StringValidation.isValidString(doctor.getDoctorId(), "Invalid Doctor Id");
 			boolean doctorName = StringValidation.isValidString(doctor.getDoctorName(), "Invalid Doctor Name");
 			boolean specialist = StringValidation.isValidString(doctor.getSpecialist(), "Invalid specialist");
 
-			if (doctorName && specialist) {
+			if (doctorId && doctorName && specialist) {
 				isValid = true;
 			}
 		} catch (Exception e) {

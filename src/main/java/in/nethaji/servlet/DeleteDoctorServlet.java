@@ -21,9 +21,9 @@ public class DeleteDoctorServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			String doctorName = request.getParameter("doctorName");
+			String doctorId = request.getParameter("doctorId");
 			DoctorService doctorService = new DoctorService();
-			boolean isDeleted = doctorService.deleteDoctor(doctorName);
+			boolean isDeleted = doctorService.deleteDoctor(doctorId);
 			if (isDeleted) {
 				response.sendRedirect("ListDoctors.jsp");
 			} else {

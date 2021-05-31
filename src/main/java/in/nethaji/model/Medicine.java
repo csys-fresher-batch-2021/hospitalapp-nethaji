@@ -10,6 +10,12 @@ public class Medicine {
 	private LocalDate expiryDate;
 	private int quantity;
 	private int usedIn;
+	
+	public LocalDate getExpiryDate1() {
+		LocalDate today = LocalDate.now();
+		
+		return today;
+	}
 
 	public int getUsedIn() {
 		return usedIn;

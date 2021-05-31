@@ -27,7 +27,7 @@ public class SearchPatientServlet extends HttpServlet {
 		try {
 			String searchName = request.getParameter("search");
 			PatientService patientService = new PatientService();
-			Patient patientName = patientService.searchPatient(searchName);
+			Patient patientName = patientService.searchPatient((searchName).toUpperCase());
 			request.setAttribute("patientName", patientName);
 			request.getRequestDispatcher("SearchPatient.jsp").forward(request, response);
 		} catch (Exception e) {
