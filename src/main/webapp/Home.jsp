@@ -56,7 +56,7 @@ form {
 			%>
 
 			<a href="ListDoctors.jsp" class="btn btn-primary"> List of
-				Doctors </a> <br/ > <br /> <a href="ListPatients.jsp"
+				Doctors </a> <br/ > <br /> <a href="DoctorAppointment.jsp"
 				class="btn btn-primary"> Appointment Booking </a> <br/ > <br />
 			<a href="ListMedicines.jsp" class="btn btn-primary"> List of
 				Medicines </a> <br/ > <br /> <a href="" class="btn btn-primary">
