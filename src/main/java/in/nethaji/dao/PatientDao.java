@@ -111,7 +111,6 @@ public class PatientDao {
 				String patientGender = rs.getString("patientGender");
 				String reason = rs.getString("reason");
 				patient = new Patient(patientName, patientAge, patientGender, reason);
-				System.out.println(patient);
 			}
 		} catch (SQLException e) {
 			throw new DBException("No Details Found");

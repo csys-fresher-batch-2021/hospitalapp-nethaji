@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.nethaji.dao.DoctorDao;
-import in.nethaji.model.Doctor;
 
 /**
  * Servlet implementation class EditDoctorServlet
@@ -24,9 +22,12 @@ public class EditDoctorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String doctorId = request.getParameter("doctorId");
-		//DoctorDao doctorDao = new DoctorDao();
-		request.setAttribute("DOCTOR_DETAILS", doctorId);
-		request.getRequestDispatcher("UpdateDoctor.jsp").forward(request, response);
+		try {
+			request.setAttribute("DOCTOR_DETAILS", doctorId);
+			request.getRequestDispatcher("UpdateDoctor.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
