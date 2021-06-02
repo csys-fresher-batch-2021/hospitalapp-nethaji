@@ -60,5 +60,15 @@ public class DoctorService {
 		}
 		return isUpdated;
 	}
+	
+	/**
+	 * This method is used to get Doctor by specialist
+	 * @param specialist
+	 * @return
+	 */
+	
+	public List<Doctor> getDoctorBySpecialist(String specialist){
+		return doctorDao.findDoctorBySpecialist(specialist);
+	}
 
 }

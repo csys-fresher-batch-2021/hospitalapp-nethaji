@@ -135,5 +135,40 @@ public class DoctorDao {
 		}
 		return doctor;
 	}
+	
+	/**
+	 * This method is used to find doctor by specialist
+	 * @param specialist
+	 * @return
+	 */
+	
+	
+	public List<Doctor> findDoctorBySpecialist(String specialist) {
+		List<Doctor> filterDoctorList = new ArrayList<>();
+		try {
+			// Step 1: Get the connection
+			connection = ConnectionUtil.getConnection();
+			// Step 2: Query
+			String sql = "select * from doctor where specialist = ?";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, specialist);
+			// Step 3: execute query
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				String doctorId = rs.getString("doctorId");
+				String doctorName = rs.getString("doctorName");
+				String specialistName = rs.getString("specialist");
+				// Store the data in model
+				Doctor doctor = new Doctor(doctorId, doctorName, specialistName);
+				// Store all doctor in list
+				filterDoctorList.add(doctor);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(connection, pst, rs);
+		}
+		return filterDoctorList;
+	}
 
 }
