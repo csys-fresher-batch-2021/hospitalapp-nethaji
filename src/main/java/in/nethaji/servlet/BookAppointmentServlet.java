@@ -1,11 +1,14 @@
 package in.nethaji.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.nethaji.dao.DoctorDao;
 import in.nethaji.model.Appointment;
@@ -32,15 +35,13 @@ public class BookAppointmentServlet extends HttpServlet {
 			Long phoneNumber = Long.parseLong(request.getParameter("phoneNumber"));
 			String patientGender = request.getParameter("gender");
 			String doctorId = request.getParameter("doctorId");
-			DoctorDao doctorDao = new DoctorDao();
-			Doctor doctor = doctorDao.getRecordById(doctorId);
-			String doctorName = doctor.getDoctorName();
-			String specialist = doctor.getSpecialist();
-			Appointment appointment = new Appointment(patientName, patientAge, phoneNumber, patientGender, doctorName,
-					specialist);
+			LocalDate appointmentDate = LocalDate.parse(request.getParameter("aDate"));
+			HttpSession session = request.getSession();
+			String username = (String) session.getAttribute("LOGGED_IN_USER");
+			Appointment appointment = new Appointment(patientName, patientAge, phoneNumber, patientGender, doctorId,appointmentDate,username);
 			AppointmentService appointmentService = new AppointmentService();
 			appointmentService.addAppointment(appointment);
-			response.sendRedirect("ViewAppointmentStatus.jsp");
+			response.sendRedirect("Home.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 			response.sendRedirect("ListAppointment.jsp?errorMessage=" + e.getMessage());

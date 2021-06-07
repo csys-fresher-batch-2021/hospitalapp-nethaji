@@ -19,9 +19,8 @@ public class AppointmentValidation {
 			boolean phoneNumber = PhoneNumberValidation.isValidMobileNumber(Long.toString(appointment.getPhoneNumber()),
 					"Invalid Mobile Number");
 			boolean gender = StringValidation.isValidGender(appointment.getGender(), "Invalid Gender");
-			boolean doctorName = StringValidation.isValidString(appointment.getDoctorName(), "Invalid Doctor Name");
-			boolean specialist = StringValidation.isValidString(appointment.getSpecialist(), "Invalid specialist");
-			if(patientName && age && phoneNumber && gender && doctorName && specialist) {
+			boolean doctorId = StringValidation.isValidString(appointment.getDoctorId(), "Invalid Doctor Id");
+			if(patientName && age && phoneNumber && gender && doctorId ) {
 				isValid =true;
 			}
 		} catch (Exception e) {

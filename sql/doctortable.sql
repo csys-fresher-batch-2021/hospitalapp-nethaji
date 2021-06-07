@@ -1,6 +1,6 @@
 -- Doctor Table --
 
-create table doctor(doctorId varchar(20) primary Key, doctorName varchar(50) not null,specialist varchar(50) not null);
+create table doctor(doctorId varchar(20) primary Key, doctorName varchar(50) not null,specialist varchar(50) not null,opFrom time not null,opTo time not null);
 insert into doctor values ('D1','Vibin kumar','ENT');
 insert into doctor values ('D2','Nethaji Pandiarajan','general');
 Select * from doctor;
@@ -26,3 +26,7 @@ select * from medicine;
 -- User Table --
 create table usertable (username varchar(50) primary key,bDate Date not null,age int not null, phoneNumber bigint, email varchar(50),pass varchar(40),gender varchar(50))
 insert into usertable values ('Nethaji','14-10-1999',21,9751713840,'nethaji1410@gmail.com','pass1234','male');
+
+--Appointment table --
+create table appointmentbooking(appointmentid serial primary key,username varchar(40) not null,patientname varchar(50) not null,age int not null, phonenumber bigint not null, gender varchar(20),doctorid varchar(20) not null,appointmentdate date not null,status int default 0) 
+select count (*),appointmentdate from appointmentbooking where appointmentdate='2021-06-04' AND doctorid='D1' group by appointmentdate

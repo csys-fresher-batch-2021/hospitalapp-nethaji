@@ -33,6 +33,7 @@
 		<%
 		}
 		%>
+		<p>Note : OP -out patient</p>
 		<table class="table table-bordered">
 			<caption>List of Available Doctors</caption>
 			<thead>
@@ -41,6 +42,8 @@
 					<th scope="col">Doctor Id</th>
 					<th scope="col">Doctor name</th>
 					<th scope="col">Specialist</th>
+					<th scope="col">OP From</th>
+					<th scope="col">OP To</th>
 					<%
 					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 					%>
@@ -64,6 +67,8 @@
 					<td><%=doctor.getDoctorId()%></td>
 					<td>Dr.<%=doctor.getDoctorName()%></td>
 					<td><%=doctor.getSpecialist()%></td>
+					<td><%=doctor.getOpFrom() %></td>
+					<td><%=doctor.getOpTo() %></td>
 					<%
 					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 					%>

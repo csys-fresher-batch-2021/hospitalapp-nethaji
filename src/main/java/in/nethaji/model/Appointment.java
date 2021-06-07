@@ -1,58 +1,58 @@
 package in.nethaji.model;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Appointment {
 
-	public Appointment(String patientName, int age, Long phoneNumber, String gender, String doctorName,
-			String specialist) {
-		super();
-		this.patientName = patientName;
-		this.age = age;
-		this.phoneNumber = phoneNumber;
-		this.gender = gender;
-		this.doctorName = doctorName;
-		this.specialist = specialist;
+	private int appointmentId;
+
+	private String patientName;
+
+	private int age;
+
+	private Long phoneNumber;
+
+	private String gender;
+
+	private String doctorId;
+
+	public int getAppointmentId() {
+		return appointmentId;
 	}
 
-	public Appointment(int appointmentId, String patientName, int age, Long phoneNumber, String gender,
-			String doctorName, String specialist) {
-		super();
+	public void setAppointmentId(int appointmentId) {
 		this.appointmentId = appointmentId;
-		this.patientName = patientName;
-		this.age = age;
-		this.phoneNumber = phoneNumber;
-		this.gender = gender;
-		this.doctorName = doctorName;
-		this.specialist = specialist;
 	}
 
-	
-	public Appointment(int appointmentId, String patientName, int age, Long phoneNumber, String gender,
-			String doctorName, String specialist, LocalDate appointmentDate, LocalTime appointmentTime, int status) {
+	public Appointment(String patientName, int age, Long phoneNumber, String gender, String doctorId,
+			LocalDate appointmentDate, String username) {
 		super();
-		this.appointmentId = appointmentId;
 		this.patientName = patientName;
 		this.age = age;
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
-		this.doctorName = doctorName;
-		this.specialist = specialist;
+		this.doctorId = doctorId;
 		this.appointmentDate = appointmentDate;
-		this.appointmentTime = appointmentTime;
-		this.status = status;
+		this.username = username;
 	}
 
-	@Override
-	public String toString() {
-		return "Appointment [appointmentId=" + appointmentId + ",patientName=" + patientName + ", age=" + age
-				+ ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", doctorName=" + doctorName + ", specialist="
-				+ specialist + "]";
-	}
 
 	public String getPatientName() {
 		return patientName;
+	}
+
+	public Appointment(int appointmentId, String patientName, int age, Long phoneNumber, String gender, String doctorId,
+			LocalDate appointmentDate, String username, int status) {
+		super();
+		this.appointmentId = appointmentId;
+		this.patientName = patientName;
+		this.age = age;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.doctorId = doctorId;
+		this.appointmentDate = appointmentDate;
+		this.username = username;
+		this.status = status;
 	}
 
 	public void setPatientName(String patientName) {
@@ -83,12 +83,12 @@ public class Appointment {
 		this.gender = gender;
 	}
 
-	public String getDoctorName() {
-		return doctorName;
+	public String getDoctorId() {
+		return doctorId;
 	}
 
-	public void setDoctorName(String doctorName) {
-		this.doctorName = doctorName;
+	public void setDoctorId(String doctorId) {
+		this.doctorId = doctorId;
 	}
 
 	public LocalDate getAppointmentDate() {
@@ -99,12 +99,12 @@ public class Appointment {
 		this.appointmentDate = appointmentDate;
 	}
 
-	public LocalTime getAppointmentTime() {
-		return appointmentTime;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setAppointmentTime(LocalTime appointmentTime) {
-		this.appointmentTime = appointmentTime;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getStatus() {
@@ -115,39 +115,10 @@ public class Appointment {
 		this.status = status;
 	}
 
-	public int getAppointmentId() {
-		return appointmentId;
-	}
-
-	public void setAppointmentId(int appointmentId) {
-		this.appointmentId = appointmentId;
-	}
-
-	private int appointmentId;
-
-	private String patientName;
-
-	private int age;
-
-	private Long phoneNumber;
-
-	private String gender;
-
-	private String doctorName;
-
-	public String getSpecialist() {
-		return specialist;
-	}
-
-	public void setSpecialist(String specialist) {
-		this.specialist = specialist;
-	}
-
-	private String specialist;
 
 	private LocalDate appointmentDate;
 
-	private LocalTime appointmentTime;
+	private String username;
 
 	private int status;
 

@@ -45,7 +45,11 @@
 				<%
 				}
 				%>
-			</select><br />
+			</select><br /> <br />
+				<Label for="OPFrom"> From: </Label>
+				<input type="time" id="time" name="opFrom"><br />
+				<Label for="OPFrom"> To: </Label>
+				<input type="time" id="time" name="opTo"><br />
 			<div style="text-align: center">
 				<jsp:include page="Message.jsp"></jsp:include><br />
 				<button>Submit</button>
