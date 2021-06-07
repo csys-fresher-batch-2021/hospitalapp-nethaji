@@ -20,6 +20,12 @@ public class DoctorDao {
 	ResultSet rs = null;
 	List<Doctor> doctorList = new ArrayList<>();
 
+	private static final String DOCTOR_ID = "doctorId";
+	private static final String DOCTOR_NAME = "doctorName";
+	private static final String SPECIALIST = "specialist";
+	private static final String OP_FROM = "opFrom";
+	private static final String OP_TO = "opTo";
+	
 	/**
 	 * This method is used to get all the doctor from database
 	 * 
@@ -36,11 +42,11 @@ public class DoctorDao {
 			// Step 3: execute query
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				String doctorId = rs.getString("doctorId");
-				String doctorName = rs.getString("doctorName");
-				String specialist = rs.getString("specialist");
-				LocalTime opFrom = rs.getTime("opFrom").toLocalTime();
-				LocalTime opTo = rs.getTime("opTo").toLocalTime();
+				String doctorId = rs.getString(DOCTOR_ID);
+				String doctorName = rs.getString(DOCTOR_NAME);
+				String specialist = rs.getString(SPECIALIST);
+				LocalTime opFrom = rs.getTime(OP_FROM).toLocalTime();
+				LocalTime opTo = rs.getTime(OP_TO).toLocalTime();
 
 				// Store the data in model
 				Doctor doctor = new Doctor(doctorId, doctorName, specialist, opFrom, opTo);
@@ -142,11 +148,11 @@ public class DoctorDao {
 			pst.setString(1, doctorId);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				String id = rs.getString("doctorId");
-				String doctorName = rs.getString("doctorName");
-				String specialist = rs.getString("specialist");
-				LocalTime opFrom = rs.getTime("opFrom").toLocalTime();
-				LocalTime opTo = rs.getTime("opTo").toLocalTime();
+				String id = rs.getString(DOCTOR_ID);
+				String doctorName = rs.getString(DOCTOR_NAME);
+				String specialist = rs.getString(SPECIALIST);
+				LocalTime opFrom = rs.getTime(OP_FROM).toLocalTime();
+				LocalTime opTo = rs.getTime(OP_TO).toLocalTime();
 				// Store the data in model
 				doctor = new Doctor(id, doctorName, specialist,opFrom,opTo);
 
@@ -178,11 +184,11 @@ public class DoctorDao {
 			// Step 3: execute query
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				String doctorId = rs.getString("doctorId");
-				String doctorName = rs.getString("doctorName");
-				String specialistName = rs.getString("specialist");
-				LocalTime opFrom = rs.getTime("opFrom").toLocalTime();
-				LocalTime opTo = rs.getTime("opTo").toLocalTime();
+				String doctorId = rs.getString(DOCTOR_ID);
+				String doctorName = rs.getString(DOCTOR_NAME);
+				String specialistName = rs.getString(SPECIALIST);
+				LocalTime opFrom = rs.getTime(OP_FROM).toLocalTime();
+				LocalTime opTo = rs.getTime(OP_TO).toLocalTime();
 				// Store the data in model
 				Doctor doctor = new Doctor(doctorId, doctorName, specialistName,opFrom,opTo);
 				// Store all doctor in list

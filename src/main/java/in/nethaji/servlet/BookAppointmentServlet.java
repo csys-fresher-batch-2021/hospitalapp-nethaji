@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import in.nethaji.dao.DoctorDao;
 import in.nethaji.model.Appointment;
-import in.nethaji.model.Doctor;
+
 import in.nethaji.service.AppointmentService;
 
 /**
@@ -42,7 +41,7 @@ public class BookAppointmentServlet extends HttpServlet {
 			AppointmentService appointmentService = new AppointmentService();
 			appointmentService.addAppointment(appointment);
 			response.sendRedirect("Home.jsp");
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("ListAppointment.jsp?errorMessage=" + e.getMessage());
 		}

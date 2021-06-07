@@ -25,12 +25,15 @@ public class AdminDoctorAppointment extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AppointmentService appointmentService = new AppointmentService();
-    	List<Appointment> appointmentList = appointmentService.getAppointment();
-    	request.setAttribute("List", appointmentList);
-    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("AdminListAppointment.jsp");
-    	requestDispatcher.forward(request, response);
-    	
+		try {
+			AppointmentService appointmentService = new AppointmentService();
+			List<Appointment> appointmentList = appointmentService.getAppointment();
+			request.setAttribute("List", appointmentList);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("AdminListAppointment.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.nethaji.dao.DoctorDao;
 import in.nethaji.service.DoctorService;
 
 /**
