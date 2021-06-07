@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="in.nethaji.model.Doctor"%>
 <%@page import="java.util.List"%>
 <%@page import="in.nethaji.service.DoctorService"%>
@@ -24,7 +25,7 @@
 	%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="main">
-		<h1>List of Doctors</h1>
+		<h1><%out.println(request.getParameter("specialist")); %> Doctors</h1>
 		<%
 		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 		%>
@@ -33,7 +34,6 @@
 		<%
 		}
 		%>
-		<p>Note : OP -out patient</p>
 		<table class="table table-bordered">
 			<caption>List of Available Doctors</caption>
 			<thead>
@@ -42,13 +42,12 @@
 					<th scope="col">Doctor Id</th>
 					<th scope="col">Doctor name</th>
 					<th scope="col">Specialist</th>
-					<th scope="col">OP From</th>
+					<th scope="col">OP From </th>
 					<th scope="col">OP To</th>
 					<%
-					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+					if (loggedInAsUser != null ) {
 					%>
-					<th scope="col">Edit</th>
-					<th scope="col">Delete</th>
+					<th scope="col">Book</th>
 					<%
 					}
 					%>
@@ -57,7 +56,7 @@
 			<tbody>
 				<%
 				DoctorService doctorService = new DoctorService();
-				List<Doctor> doctorInfo = doctorService.getDoctors();
+				List<Doctor> doctorInfo = doctorService.getDoctorBySpecialist(request.getParameter("specialist"));
 				int i = 0;
 				for (Doctor doctor : doctorInfo) {
 					i++;
@@ -69,15 +68,15 @@
 					<td><%=doctor.getSpecialist()%></td>
 					<td><%=doctor.getOpFrom() %></td>
 					<td><%=doctor.getOpTo() %></td>
+
 					<%
-					if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
+					if (loggedInAsUser != null) {
 					%>
 					<td><a
-						href="EditDoctorServlet?doctorId=<%=doctor.getDoctorId()%>"
-						class="btn btn-primary">Edit</a></td>
-					<td><a
-						href="DeleteDoctorServlet?doctorId=<%=doctor.getDoctorId()%>"
-						class="btn btn-danger">Delete</a></td>
+						href="DoctorDateAppointment.jsp?doctorId=<%=doctor.getDoctorId()%>"
+						class="btn btn-primary">Book Appointment</a></td>
+						
+					<td>
 					<%
 					}
 					%>

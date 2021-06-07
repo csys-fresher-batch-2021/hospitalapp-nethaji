@@ -23,6 +23,18 @@ input[type='number'] {
 	width: 100%;
 }
 
+input[type='time'] {
+	width: 100%;
+}
+
+select {
+	width: 100%;
+	padding: 5px 12px;
+	margin: 5px 0;
+	color: #008CBA;
+	border: 2px solid rgb(0, 140, 186);
+}
+
 input {
 	padding: 5px 12px;
 	margin: 5px 0;
@@ -60,7 +72,6 @@ header {
 	margin-left: 190px; /* Same as the width of the sidenav */
 	padding: 0px 10px;
 }
-
 
 /* Style the sidebar - fixed full height */
 .sidebar {
@@ -100,11 +111,9 @@ header {
 }
 
 .main {
-	margin-left: 210px; 
+	margin-left: 210px;
 	padding: 0px 10px;
 }
-
-
 
 .dropdown-container {
 	display: none;

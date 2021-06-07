@@ -46,21 +46,21 @@ form {
 			%>
 			<a href="ListDoctors.jsp" class="btn btn-primary"> Manage Doctors
 			</a> <br/ > <br /> <a href="ListPatients.jsp"
-				class="btn btn-primary"> Manage Patients </a> <br/ > <br /> <a
-				href="ListMedicines.jsp" class="btn btn-primary"> Manage
-				Medicine Details </a> <br/ > <br /> <a href=""
-				class="btn btn-primary"> Appointment Checking </a> <br/ > <br />
+				class="btn btn-primary"> Manage Patients </a> <br/ > <br />
+			<a href="AdminDoctorAppointment" class="btn btn-primary">
+				Appointment Checking </a> <br/ > <br /> <a
+				href="ViewAllAppointmentServlet" class="btn btn-primary"> View All
+				Appointment </a> <br/ >
 
 			<%
 			} else {
 			%>
 
 			<a href="ListDoctors.jsp" class="btn btn-primary"> List of
-				Doctors </a> <br/ > <br /> <a href="DoctorAppointment.jsp"
+				Doctors </a> <br/ > <br /> <a href="PatientWard.jsp"
 				class="btn btn-primary"> Appointment Booking </a> <br/ > <br />
-			<a href="ListMedicines.jsp" class="btn btn-primary"> List of
-				Medicines </a> <br/ > <br /> <a href="" class="btn btn-primary">
-				Medical Shop</a> <br/ > <br />
+			<a href="UserViewAppointmentServlet" class="btn btn-primary">
+				View Appointment Details </a> <br/ > <br />
 
 			<%
 			}
