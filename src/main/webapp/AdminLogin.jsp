@@ -21,9 +21,9 @@ body {
 			<h1>Admin Login</h1>
 			<br> <label for="user"> Username: </label> <input type="text"
 				id="user" name="username" placeholder="Enter the user name" required
-				autofocus> <br> <br> <label for="password">
+				autofocus> <br> <label for="password">
 				Password: </label> <input type="password" id="password" name="password"
-				required autofocus> <br> <br>
+				required autofocus> <br>
 			<div style="text-align: center">
 				<jsp:include page="Message.jsp"></jsp:include><br />
 				<button type="submit">Submit</button>

@@ -12,6 +12,34 @@ body {
 	background-repeat: repeat;
 	background-size: cover;
 }
+form {
+	border: 5px solid #000 !important;
+	padding: 10px ;
+	margin-left: 25% !important;
+	margin-top: 6% !important;
+	width: 400px;
+	background-color: #FFFFFF !important;
+	opacity: 0.9;
+}
+
+button {
+	padding: 10px 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	border: 2px solid #008CBA;
+	width:60%;
+}
+
+a{
+	cursor : pointer;
+}
 </style>
 </head>
 <body>
@@ -25,13 +53,14 @@ body {
 			<br> <label for="username"> Username: </label> <input
 				type="text" id="username" name="username"
 				placeholder="Enter the user name" required autofocus> <br>
-			<br> <label for="password"> Password: </label> <input
+			 <label for="password"> Password: </label> <input
 				type="password" id="password" name="password" required autofocus>
-			<br> <br>
+			 <br>
 
 			<div style="text-align: center">
 				<jsp:include page="Message.jsp"></jsp:include><br />
 				<button type="Submit">Submit</button>
+				<p>Don't have an account? <a href="Register.jsp">Sign Up </a></p>
 			</div>
 		</form>
 	</main>

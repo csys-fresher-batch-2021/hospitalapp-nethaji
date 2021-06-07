@@ -99,21 +99,10 @@ String role = (String) session.getAttribute("ROLE");
 		<div class="dropdown-container">
 			<a href="ListDoctors.jsp">List Doctors</a>
 		</div>
-		<button class="dropdown-btn">
-			<i class="fa fa-fw fa-user"></i>&nbsp;Patient <i
-				class="fa fa-caret-down"></i>
-		</button>
-		<div class="dropdown-container">
-			<a href="ListPatients.jsp">List Patients </a> <a
-				href="AddPatient.jsp">Add Patient</a>
-		</div>
-		<button class="dropdown-btn">
-			<i class="fa fa-pills"></i></i></i>&nbsp;Medicine<i class="fa fa-caret-down"></i>
-		</button>
-		<div class="dropdown-container">
-			<a href="ListPatients.jsp">List Medicines </a>
-		</div>
-		<a href="DoctorAppointment.jsp"><i class="fa fa-fw fa-user"></i>&nbsp; Book Appointment</a>
+		<a href="PatientWard.jsp"><i class="fa fa-fw fa-user"></i>&nbsp;
+			Appointments</a> <a href="UserViewAppointmentServlet"><i
+			class="fa fa-fw fa-user"></i>&nbsp;View Status</a>
+
 		<%
 		}
 		%>

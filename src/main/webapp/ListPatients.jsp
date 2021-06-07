@@ -31,7 +31,7 @@ form {
 	%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="main">
-		<h1>List of Patient</h1>
+		<h1>List of IN-Patient</h1>
 		<%
 		if (loggedInAsAdmin != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 		%>
