@@ -13,16 +13,25 @@ body {
 	backgroud-position: center;
 }
 
+.img-fluid {
+	width: 250px !important;
+	height: 200px !important;
+}
+
+.img-fluid:hover {	
+	
+	width: 250px !important;
+	height: 200px !important;
+	opacity: 0.9;
+}
+
 form {
 	border: 5px solid #008CBA !important;
 	margin-left: 20px !important;
 }
 
-.btn {
-	font-size: 20px !important;
-	padding: 20px !important;
-	border-radius: 10px !important;
-	width: 100% !important;
+.btn-primary {
+	width: 250px;
 }
 </style>
 </head>
@@ -41,21 +50,118 @@ form {
 	%>
 	<jsp:include page="Header.jsp"></jsp:include>
 	<main class="main">
-		<h3 style="color: #008CBA">Hospital Management System</h3>
-		<form action="WardSelectionServlet" method="get">
-			<%
-			if (loggedInAsUser != null) {
-			%>
-			<a href="WardSelectionServlet?specialist=General" class="btn btn-primary"> General ward </a> <br/ >
-			<br /> <a href="WardSelectionServlet?specialist=ENT" class="btn btn-primary"> ENT </a>
-			<br/ > <br /> <a href="WardSelectionServlet?specialist=Cardiology"
-				class="btn btn-primary"> Cardiology </a> <br/ > <br /> <a
-				href="WardSelectionServlet?specialist=ophthalmologist" class="btn btn-primary">
-				ophthalmologist </a> <br/ > <br />
-			<%
-			}
-			%>
-		</form>
+		<h3 style="color: #008CBA">Wards</h3>
+
+		<%
+		if (loggedInAsUser != null) {
+		%>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=General"> <img
+						href="WardSelectionServlet?specialist=General" src="img/ward2.jpg"
+						class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=General"
+						class="btn btn-primary">GENERAL</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=ENT"> <img
+						href="WardSelectionServlet?specialist=ENT" src="img/ward1.jpg"
+						class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=ENT"
+						class="btn btn-primary">ENT</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=ophthalmologist"> <img
+						href="WardSelectionServlet?specialist=ophthalmologist"
+						src="img/ward3.jpg" class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=ophthalmologist"
+						class="btn btn-primary">OPHTHALMOLOGIST</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=Cardiology"> <img
+						href="WardSelectionServlet?specialist=Cardiology"
+						src="img/ward4.jpg" class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=Cardiology"
+						class="btn btn-primary">CARDIOLOGY</a>
+				</div>
+			</div>
+
+		</div>
+		<br />
+				<div class="row">
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=Dentist"> <img
+						href="WardSelectionServlet?specialist=Dentist" src="img/ward5.jpg"
+						class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=Dentist"
+						class="btn btn-primary">DENTIST</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=Neurologist"> <img
+						href="WardSelectionServlet?specialist=Neurologist" src="img/ward6.jpg"
+						class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=Neurologist"
+						class="btn btn-primary">NEUROLOGIST</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=Oncologist"> <img
+						href="WardSelectionServlet?specialist=Oncologist"
+						src="img/ward7.jpg" class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=Oncologist"
+						class="btn btn-primary">ONCOLOGIST</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="img">
+					<a href="WardSelectionServlet?specialist=Dermatologist"> <img
+						href="WardSelectionServlet?specialist=Dermatologist"
+						src="img/ward8.png" class="img-fluid">
+					</a>
+				</div>
+				<div class="caption">
+					<a href="WardSelectionServlet?specialist=Dermatologist"
+						class="btn btn-primary">DERMATOLOGIST</a>
+				</div>
+			</div>
+
+		</div>
+		<%
+		}
+		%>
+
 	</main>
 </body>
 </html>

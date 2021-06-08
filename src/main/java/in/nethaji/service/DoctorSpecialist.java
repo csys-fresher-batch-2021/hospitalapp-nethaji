@@ -15,7 +15,11 @@ public class DoctorSpecialist {
 		specialistList.add("ENT");
 		specialistList.add("General");
 		specialistList.add("Cardiology");
-		specialistList.add("ophthalmologist");
+		specialistList.add("Ophthalmologist");
+		specialistList.add("Dentist");
+		specialistList.add("Neurologist");
+		specialistList.add("Oncologist");
+		specialistList.add("Dermatologist");
 	}
 
 	public static List<String> getSpecialistList() {
