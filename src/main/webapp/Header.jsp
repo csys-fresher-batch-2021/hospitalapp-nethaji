@@ -62,28 +62,28 @@ String role = (String) session.getAttribute("ROLE");
 	</nav>
 	<div class="sidebar">
 		<a class="navbar-brand" href="Home.jsp">Hospital App</a><br /> <br />
-		<a href="Home.jsp"><i class="fa fa-fw fa-home"></i> Home</a>
+		<a href="Home.jsp"><em class="fa fa-fw fa-home"></em> Home</a>
 		<%
 		if (loggedInAsUser == null && loggedInAsAdmin != null) {
 		%>
 		<button class="dropdown-btn">
-			<i class="fa fa-user-md"></i> &nbsp; Doctor <i
-				class="fa fa-caret-down"></i>
+			<em class="fa fa-user-md"></em> &nbsp; Doctor <em
+				class="fa fa-caret-down"></em>
 		</button>
 		<div class="dropdown-container">
 			<a href="ListDoctors.jsp">List Doctors</a> <a href="AddDoctor.jsp">Add
 				Doctors</a>
 		</div>
 		<button class="dropdown-btn">
-			<i class="fa fa-fw fa-user"></i>&nbsp;Patient <i
-				class="fa fa-caret-down"></i>
+			<em class="fa fa-fw fa-user"></em>&nbsp;Patient <em
+				class="fa fa-caret-down"></em>
 		</button>
 		<div class="dropdown-container">
 			<a href="ListPatients.jsp">List Patients </a> <a
 				href="AddPatient.jsp">Add Patient</a>
 		</div>
 		<button class="dropdown-btn">
-			<i class="fa fa-pills"></i></i></i>&nbsp;Medicine<i class="fa fa-caret-down"></i>
+			<em class="fa fa-pills"></em>&nbsp;Medicine<em class="fa fa-caret-down"></em>
 		</button>
 		<div class="dropdown-container">
 			<a href="ListPatients.jsp">List Medicines </a> <a
@@ -93,15 +93,15 @@ String role = (String) session.getAttribute("ROLE");
 		} else {
 		%>
 		<button class="dropdown-btn">
-			<i class="fa fa-user-md"></i> &nbsp; Doctor <i
-				class="fa fa-caret-down"></i>
+			<em class="fa fa-user-md"></em> &nbsp; Doctor <em
+				class="fa fa-caret-down"></em>
 		</button>
 		<div class="dropdown-container">
 			<a href="ListDoctors.jsp">List Doctors</a>
 		</div>
-		<a href="PatientWard.jsp"><i class="fa fa-fw fa-user"></i>&nbsp;
-			Appointments</a> <a href="UserViewAppointmentServlet"><i
-			class="fa fa-fw fa-user"></i>&nbsp;View Status</a>
+		<a href="PatientWard.jsp"><em class="fa fa-fw fa-user"></em>&nbsp;
+			Appointments</a> <a href="UserViewAppointmentServlet"><em
+			class="fa fa-fw fa-user"></em>&nbsp;View Status</a>
 
 		<%
 		}

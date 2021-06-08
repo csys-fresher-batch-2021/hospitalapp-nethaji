@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="in.nethaji.model.Doctor"%>
 <%@page import="in.nethaji.dao.DoctorDao"%>
 <%@page import="in.nethaji.service.DoctorService"%>
@@ -38,12 +39,14 @@
 					<th scope="col">Patient Age</th>
 					<th scope="col">Phone Number</th>
 					<th scope="col">Gender</th>
+					<th scope="col">Appointment Date</th>
 					<th scope="col">Doctor name</th>
 					<th scope="col">specialist</th>
 					<%
-					if (loggedInAsUser != null ) {
+					if (loggedInAsUser != null) {
 					%>
 					<th scope="col">Appointment Status</th>
+					<th scope="col">Cancel</th>
 					<%
 					}
 					%>
@@ -51,7 +54,6 @@
 			</thead>
 
 			<%
-			
 			List<Appointment> appointmentInfo = (List<Appointment>) request.getAttribute("List");
 			for (Appointment appointment : appointmentInfo) {
 				String id = appointment.getDoctorId();
@@ -66,31 +68,47 @@
 				<td><%=appointment.getAge()%></td>
 				<td><%=appointment.getPhoneNumber()%></td>
 				<td><%=appointment.getGender()%></td>
+				<td><%=appointment.getAppointmentDate() %>
 				<td><%=doctor.getDoctorName()%></td>
 				<td><%=doctor.getSpecialist()%></td>
 				<td>
-				<%
-				if (loggedInAsUser != null) {
-					if(appointment.getStatus() == 1){
-				%>
-				<h3>
-						<span class="badge badge-primary">Accepted</span>
-					</h3>
-				<% }else if(appointment.getStatus() == 2){ %>
-				<h3>
+					<%
+					if (loggedInAsUser != null) {
+						if (appointment.getStatus() == 1) {
+					%>
+					<h3>
+						<span class="badge badge-primary">Accepted</span> 
+					</h3> <%
+ } else if (appointment.getStatus() == 2) {
+ %>
+					<h3>
 						<span class="badge badge-danger">Rejected</span>
+					</h3><%
+ } else if(appointment.getStatus()== 0){
+ %>
+					<h3>
+						<span class="badge badge-warning">Pending</span> 
+
 					</h3>
-					<% }else{ %>
-				<h3>
-						<span class="badge badge-warning">Pending</span>
+					
+					 <%
+ }else{
+ %>
+ 				<h3>
+						<span class="badge badge-danger">Cancelled</span> 
+
 					</h3>
-				<%
-				}
-				}
-				%>
+				</td>
+	<% } %>
+				<td>
+				<%if (LocalDate.now().isBefore(appointment.getAppointmentDate()) ){ 
+				if(appointment.getStatus() == 0 || appointment.getStatus()== 1){ %>
+				<a href="AdminAppointmentFixing?appointmentId=<%=appointment.getAppointmentId()%>&status=3" class="btn btn-danger">Cancel</a>
+				<% }} %>
 				</td>
 			</tr>
 			<%
+			}
 			}
 			%>
 		</table>

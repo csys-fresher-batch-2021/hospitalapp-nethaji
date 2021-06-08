@@ -80,9 +80,14 @@
 				<h3>
 						<span class="badge badge-danger">Rejected</span>
 					</h3>
-					<% }else{ %>
+					<% }else if(appointment.getStatus() == 0){ %>
 				<h3>
 						<span class="badge badge-warning">Pending</span>
+					</h3>
+					
+					<% }else{ %>
+					<h3>
+						<span class="badge badge-danger">Cancelled</span>
 					</h3>
 				<%
 				}
