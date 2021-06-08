@@ -125,7 +125,7 @@ public class AppointmentDao {
 	public int getBookedAppointments(String doctorId, LocalDate aDate) {
 		int count = 0;
 		try {
-			String sql = "select count (*),appointmentdate from appointmentbooking where appointmentdate=? AND doctorid=? group by appointmentdate";
+			String sql = "select count (*),appointmentdate from appointmentbooking where appointmentdate=? AND doctorid=? AND status = 1 group by appointmentdate";
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setDate(1, Date.valueOf(aDate));

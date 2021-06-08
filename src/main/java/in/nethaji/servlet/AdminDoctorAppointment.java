@@ -31,7 +31,7 @@ public class AdminDoctorAppointment extends HttpServlet {
 			request.setAttribute("List", appointmentList);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("AdminListAppointment.jsp");
 			requestDispatcher.forward(request, response);
-		} catch (ServletException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

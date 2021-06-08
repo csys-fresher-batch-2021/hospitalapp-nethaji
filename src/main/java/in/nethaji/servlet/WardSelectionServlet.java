@@ -24,7 +24,7 @@ public class WardSelectionServlet extends HttpServlet {
 			doctorService.getDoctorBySpecialist(specialist);
 			request.setAttribute("specialist", specialist);
 			request.getRequestDispatcher("ListDoctorSpecialist.jsp").forward(request, response);
-		} catch (ServletException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

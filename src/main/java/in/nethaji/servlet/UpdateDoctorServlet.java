@@ -35,7 +35,6 @@ public class UpdateDoctorServlet extends HttpServlet {
 			Doctor doctor = new Doctor(doctorId, doctorName, specialist,opFrom ,opTo);
 			DoctorService doctorService = new DoctorService();
 			doctorService.updateDoctor(doctor);
-			System.out.println(doctor);
 			response.sendRedirect("ListDoctors.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

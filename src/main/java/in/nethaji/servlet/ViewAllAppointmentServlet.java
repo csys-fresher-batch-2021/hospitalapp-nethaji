@@ -24,9 +24,13 @@ public class ViewAllAppointmentServlet extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AppointmentService appointmentService = new AppointmentService();
-    	List<Appointment> appointments = appointmentService.getAllAppointmentList();
-    	request.setAttribute("Appointment", appointments);
-		request.getRequestDispatcher("ViewAllAppointmentAdmin.jsp").forward(request, response);
+		try {
+			AppointmentService appointmentService = new AppointmentService();
+			List<Appointment> appointments = appointmentService.getAllAppointmentList();
+			request.setAttribute("Appointment", appointments);
+			request.getRequestDispatcher("ViewAllAppointmentAdmin.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

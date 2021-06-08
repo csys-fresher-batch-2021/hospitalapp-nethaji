@@ -30,10 +30,14 @@ public class UserViewAppointmentServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("LOGGED_IN_USER");
 		
-		AppointmentService appointmentService = new AppointmentService();
-		List<Appointment> appointmentList = appointmentService.getUpdatedAppointmentList(username);
-		request.setAttribute("List", appointmentList);
-    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("ViewAppointment.jsp");
-    	requestDispatcher.forward(request, response);
+		try {
+			AppointmentService appointmentService = new AppointmentService();
+			List<Appointment> appointmentList = appointmentService.getUpdatedAppointmentList(username);
+			request.setAttribute("List", appointmentList);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("ViewAppointment.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 	}
 }
